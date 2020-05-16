@@ -59,7 +59,7 @@ sudo mount -t vboxsf filesname /mnt/filesname
 可能报错wrong fs type, bad option, bad superblock
 ，经过搜索需要安装```apt-get install nfs-common```   
 但是安装后依旧报错，查看系统日志，报错信息如下：
-![explain](mysqlIndex/error.png)
+![explain](/images/mysqlIndex/error.png)
 只查到了一条有用的记录，且是英文的，原来这是virtualbox的一个bug，我记得virtualbox还有一个bug,就是不能在共享文件夹里使用python的虚拟环境，但是这版直接共享文件夹都不能挂载了。路径如下：
 [virtualbox bug](https://www.virtualbox.org/ticket/9307 "virtualbox bug")
 再安装两个插件即可

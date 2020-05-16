@@ -14,7 +14,7 @@ categories:
 显示机器的处理器架构
 **举例**
 
-![towrow](linux/arch.png)
+![towrow](/images/linux/arch.png)
 ### uname
 **描述**
 
@@ -31,7 +31,7 @@ categories:
 --version 　显示版本信息。     
 **举例**
 
-![towrow](linux/uname.png)
+![towrow](/images/linux/uname.png)
 
 ### dmidecode
 **描述**

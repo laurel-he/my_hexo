@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>贺小娇的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="贺小娇的博客">
+<meta property="og:url" content="http://www.hexiaojiao.top/page/4/index.html">
+<meta property="og:site_name" content="贺小娇的博客">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Laurel He">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="贺小娇的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">贺小娇的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.hexiaojiao.top"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-AbstractFactory" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/22/AbstractFactory/" class="article-date">
+  <time datetime="2019-07-22T09:40:10.000Z" itemprop="datePublished">2019-07-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/22/AbstractFactory/">抽象工厂模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>在不指定具体类的情况下创建一系列相关或依赖对象。 通常创建的类都实现相同的接口。 抽象工厂的客户并不关心这些对象是如何创建的，它只是知道它们是如何一起运行的。</p>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><h4 id=""><a href="#" class="headerlink" title=""></a></h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KuaidiBirdLogic</span> <span class="keyword">extends</span> <span class="title">BaseLogic</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $basic;</span><br><span class="line">    <span class="keyword">private</span> $num;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(int $num, int $basic)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;num = $num;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;basic = $basic;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KuaidiOneLogic</span> <span class="keyword">implements</span> <span class="title">KuaidiBase</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $num;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(int $num)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;num = $num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>定义抽象工厂类</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExpressFactory</span> <span class="keyword">extends</span> <span class="title">Model</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getKuaidiBirdList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> KuaidiBirdLogic(<span class="number">12</span>, <span class="number">13</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getKuaidiOneLogic</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> KuaidiOneLogic();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="几种工厂模式的区别"><a href="#几种工厂模式的区别" class="headerlink" title="几种工厂模式的区别"></a>几种工厂模式的区别</h2><h4 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h4><p>类似于示例Basic</p>
+<h4 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h4><h4 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h4><h4 id="静态工厂模式"><a href="#静态工厂模式" class="headerlink" title="静态工厂模式"></a>静态工厂模式</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.hexiaojiao.top/2019/07/22/AbstractFactory/" data-id="cka4vkt1h000ng4am0hbuc1j6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D/" rel="tag">概念介绍</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-dePat" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/22/dePat/" class="article-date">
+  <time datetime="2019-07-22T02:03:10.000Z" itemprop="datePublished">2019-07-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/22/dePat/">基础介绍</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#基础介绍</p>
+<h2 id="设计具备的特性"><a href="#设计具备的特性" class="headerlink" title="设计具备的特性"></a>设计具备的特性</h2><p>（1）应该对手头的问题有针对性，同时对将来的问题和需求也要有足够的通用性；<br>（2）避免重复设计或尽可能少做重复设计</p>
+<h2 id="什么是设计模式"><a href="#什么是设计模式" class="headerlink" title="什么是设计模式"></a>什么是设计模式</h2><h3 id="模式四要素"><a href="#模式四要素" class="headerlink" title="模式四要素"></a>模式四要素</h3><h4 id="模式名称"><a href="#模式名称" class="headerlink" title="模式名称"></a>模式名称</h4><p>助记名，使用一两个词来描述模式的问题、解决方案和效果    </p>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>描述了应该在何时使用设计模式</p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>描述了设计的组成成分，它们之间的相互关系及各自的职责和协作方式</p>
+<h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4><p>描述了模式应用的效果及使用模式应权衡的问题</p>
+<h2 id="模式三种分类"><a href="#模式三种分类" class="headerlink" title="模式三种分类"></a>模式三种分类</h2><h3 id="创建型"><a href="#创建型" class="headerlink" title="创建型"></a>创建型</h3><p>与对象的创建有关，在软件工程中，创建型设计模式是处理对象创建机制的设计模式，试图以适当的方式来创建对象。对象创建的基本形式可能会带来设计问题，亦或增加了设计的复杂度。创建型设计模式通过控制这个对象的创建方式来解决此问题。</p>
+<h3 id="结构型"><a href="#结构型" class="headerlink" title="结构型"></a>结构型</h3><p>处理类或对象的组合，通过识别实体之间关系来简化设计的设计模式。</p>
+<h3 id="行为型"><a href="#行为型" class="headerlink" title="行为型"></a>行为型</h3><p>对类或对象怎样交互和怎样分配职责进行描述，识别对象之间的通用通信模式并实现这些模式的设计模式。 通过这样做，这些模式增加了执行此通信的灵活性。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.hexiaojiao.top/2019/07/22/dePat/" data-id="cka4vkt2e001yg4ame2mi86ue" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D/" rel="tag">概念介绍</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-demo_01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/18/demo_01/" class="article-date">
+  <time datetime="2019-07-18T01:37:10.000Z" itemprop="datePublished">2019-07-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/18/demo_01/">demo实例</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="js正则表达式"><a href="#js正则表达式" class="headerlink" title="js正则表达式"></a>js正则表达式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> patt = <span class="regexp">/[顺丰]/</span>;</span><br><span class="line">      <span class="keyword">let</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(patt, <span class="string">'i'</span>);</span><br><span class="line">      <span class="keyword">const</span> company = (reg.test(record.remark) === <span class="literal">true</span>) ? <span class="string">'shunfeng'</span> : <span class="string">'annengwuliu'</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'re test-=-----'</span>, company);</span><br><span class="line">      <span class="keyword">const</span> num = record.remark.replace(<span class="regexp">/[^0-9]/ig</span>, <span class="string">""</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="递归读取层级json"><a href="#递归读取层级json" class="headerlink" title="递归读取层级json"></a>递归读取层级json</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">getAllKey (obj: any, <span class="attr">name</span>: string, moduleName?: string): any[] &#123;</span><br><span class="line">  <span class="keyword">const</span> arr: any[] = []</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Object</span>.keys(obj)) &#123;</span><br><span class="line">      <span class="keyword">let</span> keys = <span class="built_in">Object</span>.keys(obj);</span><br><span class="line">      <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">return</span> keys.map(<span class="function">(<span class="params">items</span>) =&gt;</span> &#123;</span><br><span class="line">        i++;</span><br><span class="line">        <span class="keyword">if</span> (obj[items] <span class="keyword">instanceof</span> <span class="built_in">Object</span>) &#123;</span><br><span class="line">          <span class="comment">// console.log("obj[items]:", items);</span></span><br><span class="line">          <span class="keyword">let</span> itemRes = items;</span><br><span class="line">          <span class="keyword">if</span> (obj[items][<span class="string">'type'</span>]) &#123;</span><br><span class="line">            <span class="comment">// console.log('it is number:', obj[items]['type']);</span></span><br><span class="line">            itemRes = obj[items][<span class="string">'type'</span>];</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">const</span> names = name + <span class="string">'-'</span> + itemRes</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">this</span>.getAllKey(obj[items], names, moduleName);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="comment">// console.log('items:', name + '-' + items);</span></span><br><span class="line">          <span class="keyword">const</span> resItems = name + <span class="string">'-'</span> + items;</span><br><span class="line">          <span class="comment">// console.log('split array:', resItems.split('-'));</span></span><br><span class="line">          <span class="keyword">if</span> (resItems == moduleName) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.handleRender(resItems, treeRule.modules, moduleName, i);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'arr'</span>, arr)</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.hexiaojiao.top/2019/07/18/demo_01/" data-id="cka4vkt2h0025g4am3swk2xjv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/demo/" rel="tag">demo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-react_02" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/09/react_02/" class="article-date">
+  <time datetime="2019-07-09T01:37:10.000Z" itemprop="datePublished">2019-07-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>►<a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/react/">react</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/09/react_02/">react学习-javascript函数式编程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="react学习手册"><a href="#react学习手册" class="headerlink" title="react学习手册"></a>react学习手册</h1><h2 id="Javascript函数式编程"><a href="#Javascript函数式编程" class="headerlink" title="Javascript函数式编程"></a>Javascript函数式编程</h2><h3 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h3><p>1 函数式编程：<br>函数是第一类成员，函数就是数据，可以像变量那样被保存，检索或者在应用程序内部传递。<br>（1）可以像声明变量一样声明函数；函数就是变量，可以添加到对象中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    message: <span class="string">'asdsada'</span>,</span><br><span class="line">    log(message) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(message);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  obj.log(obj.message);</span><br></pre></td></tr></table></figure>
+<p>（2）可以将函数添加到数组中；<br>（3）函数可以像其他变量一样，作为其他函数的参数传递，也可以作为其他函数的执行结果被返回;    </p>
+<h3 id="命令式和声明式编程"><a href="#命令式和声明式编程" class="headerlink" title="命令式和声明式编程"></a>命令式和声明式编程</h3><p>命令式编程：对执行结果的描述胜于执行过程<br>声明式编程： 代码关注重点是达成目标的具体过程</p>
+<h3 id="不可变性"><a href="#不可变性" class="headerlink" title="不可变性"></a>不可变性</h3><p>（1）使用Objct.assign()方法：一种拷贝机制，提供一个空白对象，将操作的对象拷贝到该对象上，然后修改拷贝对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.assign(&#123;&#125;, color, &#123;<span class="attr">rating</span>:rating&#125;)</span><br></pre></td></tr></table></figure>
+<p>（2）可以使用ES6规范下的箭头函数和ES7规范下的对象扩展运算符编写同样的函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> rateColor = <span class="function">(<span class="params">color, rating</span>) =&gt;</span> (&#123;</span><br><span class="line">    ...color,</span><br><span class="line">    rating</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>注意，在箭头函数中，箭头不能指向一个对象的花括号；Array.push方法不是一个不可变函数，使用Array.concat取代<br>可以使用ES6扩展运算符串联数组，同时改操作符可以使用同样的机制拷贝对象，并将它添加到原生数组的副本上</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> addColor = <span class="function">(<span class="params">title, list</span>) =&gt;</span> [...list, &#123;title&#125;]</span><br></pre></td></tr></table></figure>
+<h3 id="纯函数"><a href="#纯函数" class="headerlink" title="纯函数"></a>纯函数</h3><p>1 概念：<br>返回结果值依赖于输入参数的函数。纯函数至少需要接受一个参数并且总是返回一个值或者其他函数。不产生副作用，不修改全局变量或任何应用程序的state,将输入参数当成不可变数据   </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> frederick = &#123;</span><br><span class="line">  name: <span class="string">"Frederick Douglass"</span>,</span><br><span class="line">  canRead: <span class="literal">false</span>,</span><br><span class="line">  canWrite: <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selfEducate = <span class="function"><span class="params">person</span> =&gt;</span></span><br><span class="line">    (&#123;</span><br><span class="line">        ...person,</span><br><span class="line">        canRead: <span class="literal">true</span>,</span><br><span class="line">        canWrite: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Pure Function, takes an argument, returns an object,</span></span><br><span class="line"><span class="comment">//    and causes zero side effects</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( selfEducate(frederick) )</span><br><span class="line"><span class="built_in">console</span>.log( frederick )</span><br></pre></td></tr></table></figure>
+<p>2 纯函数三条原则：<br>（1）函数应该至少接收一个参数；<br>（2）函数应该返回一个值或者其他函数；<br>（3）函数不应该修改或者影响任何传给它的参数</p>
+<h3 id="数据转换"><a href="#数据转换" class="headerlink" title="数据转换"></a>数据转换</h3><p>1 概念：<br>将数据转换成另外一种数据，使用函数生成转换后的副本<br>2 Array.map和Array.filter方法<br>转换数组<br>3 reduce和reduceRight<br>可以用来将数组转换成任意值。<br>举例：<br>（1）数组转换成数字:以下实例循环迭代，每次返回最大值，然后将结果作为上一次回调函数的返回值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAge</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> ages = [<span class="number">10</span>, <span class="number">21</span>,<span class="number">33</span>, <span class="number">20</span>,<span class="number">15</span>, <span class="number">14</span>, <span class="number">90</span>, <span class="number">12</span>];</span><br><span class="line">        <span class="keyword">const</span> maxAge = ages.reduce(<span class="function">(<span class="params">max, age</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;age&#125;</span> &gt; <span class="subst">$&#123;max&#125;</span> = <span class="subst">$&#123;age &gt; max&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">if</span> (age &gt; max) &#123;</span><br><span class="line">                <span class="keyword">return</span> age;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> max;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">const</span> max = ages.reduce(<span class="function">(<span class="params">max, value</span>) =&gt;</span> &#123;(value &gt; max) ? value : max&#125;, <span class="number">0</span>);        </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'maxage'</span>, maxAge);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>reduceRight和reduce类似，从数组末尾处理元素。<br>（2）数组转化成对象    </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.hexiaojiao.top/2019/07/09/react_02/" data-id="cka4vkt4a0056g4am3ew73wx1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-react_01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/08/react_01/" class="article-date">
+  <time datetime="2019-07-08T01:37:10.000Z" itemprop="datePublished">2019-07-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>►<a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/react/">react</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/08/react_01/">react学习-es6基础特性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="react学习手册"><a href="#react学习手册" class="headerlink" title="react学习手册"></a>react学习手册</h1><h2 id="新特性"><a href="#新特性" class="headerlink" title="新特性"></a>新特性</h2><p>1 react开发者工具：react developer tools，可以查看网站react元素<br>2 yarn进行依赖管理：yarn.lock文件，可以使用yarn install安装，npm install yarn,yarn add [package-name],yarn remove [package-name]</p>
+<h4 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h4><p>1 const:常量，不能被修改，重写会报错；<br>2 let:变量，可以将变量作用域限定在任意代码块中（var不行）<br>3 模板字符串${}，可在字符串中插入变量</p>
+<h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><p>1 介绍：用户可以不使用function关键字创建函数，通常还不需要return<br>2 箭头函数可以限制this的作用域，箭头函数没有自己的this,引用外层的this;</p>
+<h4 id="ES6转译"><a href="#ES6转译" class="headerlink" title="ES6转译"></a>ES6转译</h4><p>1 介绍：浏览器运行前将代码转成符合ES5规范的代码，Bable是当前最流行的转译工具之一</p>
+<h4 id="ES6的对象和数组"><a href="#ES6的对象和数组" class="headerlink" title="ES6的对象和数组"></a>ES6的对象和数组</h4><p>1 解构赋值：<br>(1)允许用户将某个对象内的字段的作用域本地化，并且声明哪些值是将要使用的。<br>举例：  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sandwich =  &#123;</span><br><span class="line">     bread: <span class="string">"dutch crunch"</span>,</span><br><span class="line">     meat: <span class="string">"tuna"</span>,</span><br><span class="line">     cheese: <span class="string">"swiss"</span>,</span><br><span class="line">     toppings: [<span class="string">"lettuce"</span>, <span class="string">"tomato"</span>, <span class="string">"mustard"</span>]</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">var</span> &#123;bread, meat&#125; = sandwich</span><br><span class="line">   <span class="built_in">console</span>.log(bread, meat)</span><br><span class="line">   bread = <span class="string">"garlic"</span></span><br><span class="line">   meat = <span class="string">"turkey"</span></span><br><span class="line">   <span class="built_in">console</span>.log(bread,meat)</span><br><span class="line">   <span class="built_in">console</span>.log(sandwich.bread, sandwich.meat)</span><br></pre></td></tr></table></figure>
+<p>(2)除了使用点符号访问对象内部属性之外，还可以在对象之外解构需要使用的值。    </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> regularPerson = &#123;</span><br><span class="line">    firstname: <span class="string">"Bill"</span>,</span><br><span class="line">    lastname: <span class="string">"Wilson"</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">var</span> lordify = <span class="function">(<span class="params">&#123;firstname&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    	<span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;firstname&#125;</span> of regularPerson`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    lordify(regularPerson);</span><br></pre></td></tr></table></figure>
+<p>(3)数组中的值也可以被解构，还可以使用都好进行列表匹配，跳过不需要的值；    </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> [firstResort] = [<span class="string">"Kirkwood"</span>, <span class="string">"Squaw"</span>, <span class="string">"Alpine"</span>]</span><br><span class="line"> <span class="built_in">console</span>.log(firstResort)</span><br><span class="line"><span class="keyword">var</span> [, , third] = [<span class="string">"Kirkwood"</span>, <span class="string">"Squaw"</span>, <span class="string">"Alpine"</span>]</span><br><span class="line"><span class="built_in">console</span>.log(third)</span><br></pre></td></tr></table></figure>
+<p>2 对象语义增强<br>可以从全局作用域中获得变量并转化成一个对象。还可以通过对象语义增强或重组构造对象的方法：    </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">'yaya'</span>;</span><br><span class="line"><span class="keyword">let</span> ela = <span class="string">'test'</span>;</span><br><span class="line"><span class="keyword">let</span> func = &#123;name, ela&#125;;</span><br><span class="line"><span class="keyword">let</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Mmt. <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>  is aa <span class="subst">$&#123;<span class="keyword">this</span>.ela&#125;</span> oo`</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'func'</span>, func);</span><br><span class="line"><span class="keyword">let</span> funclike = &#123;name, ela, test&#125;;</span><br><span class="line">funclike.test();</span><br></pre></td></tr></table></figure>
+<p>定义了对象方法后就不需要使用关键字function了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 旧方案</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"Léo Taillefer"</span></span><br><span class="line">    <span class="keyword">var</span> sound = <span class="string">"Kahh"</span></span><br><span class="line">    <span class="keyword">var</span> skier = &#123;</span><br><span class="line">      name: name,</span><br><span class="line">      sound: sound,</span><br><span class="line">      powderYell: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> yell = <span class="keyword">this</span>.sound.toUpperCase()</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;yell&#125;</span> <span class="subst">$&#123;yell&#125;</span> <span class="subst">$&#123;yell&#125;</span>!!!`</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">      speed: <span class="function"><span class="keyword">function</span>(<span class="params">mph</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.speed = mph</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'speed:'</span>, mph)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    skier.powderYell()</span><br><span class="line">    skier.speed(<span class="string">"hair on fire"</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(skier))</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新方案</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"Julia Mancuso"</span></span><br><span class="line">    <span class="keyword">var</span> sound = <span class="string">"go fast"</span></span><br><span class="line">    <span class="keyword">const</span> skier = &#123;</span><br><span class="line">      name,</span><br><span class="line">      sound,</span><br><span class="line">      powderYell() &#123;</span><br><span class="line">        <span class="keyword">let</span> yell = <span class="keyword">this</span>.sound.toUpperCase()</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;yell&#125;</span> <span class="subst">$&#123;yell&#125;</span> <span class="subst">$&#123;yell&#125;</span>!!!`</span>)</span><br><span class="line">      &#125;,</span><br><span class="line">      speed(mph) &#123;</span><br><span class="line">        <span class="keyword">this</span>.speed = mph</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'speed:'</span>, mph)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    skier.powderYell()</span><br><span class="line">    skier.speed(<span class="number">350</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(skier))</span><br></pre></td></tr></table></figure>
+<p>3 扩展运算符<br>（1）扩展运算符允许联合数组中的内容：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> peaks = [<span class="string">"Tallac"</span>, <span class="string">"Ralston"</span>, <span class="string">"Rose"</span>]</span><br><span class="line"><span class="keyword">var</span> canyons = [<span class="string">"Ward"</span>, <span class="string">"Blackwood"</span>]</span><br><span class="line"><span class="keyword">var</span> tahoe = [...peaks, ...canyons]</span><br><span class="line"><span class="built_in">console</span>.log(tahoe.join(<span class="string">', '</span>))</span><br></pre></td></tr></table></figure>
+<p>（2）可以创建副本，不需要改变数组原生解构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var peaks &#x3D; [&quot;Tallac&quot;, &quot;Ralston&quot;, &quot;Rose&quot;]</span><br><span class="line">var [last] &#x3D; [...peaks].reverse()</span><br><span class="line">console.log(last);</span><br><span class="line">console.log(peaks.join(&#39;, &#39;));</span><br></pre></td></tr></table></figure>
+<p>（3）可以用来获取数组中的其余元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> peaks = [<span class="string">"Tallac"</span>, <span class="string">"Ralston"</span>, <span class="string">"Rose"</span>, <span class="string">"te11"</span>, <span class="string">"tes12"</span>]</span><br><span class="line"><span class="keyword">var</span> [last, ...rest] = peaks;</span><br><span class="line"><span class="built_in">console</span>.log(last);</span><br><span class="line"><span class="built_in">console</span>.log(rest.join(<span class="string">', '</span>));</span><br></pre></td></tr></table></figure>
+<p>（4）可以将函数参数收集到一个数组中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">directions</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> [start, ...remaining] = args</span><br><span class="line">      <span class="keyword">var</span> [finish, ...stops] = remaining.reverse()</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`drive through <span class="subst">$&#123;args.length&#125;</span> towns`</span>)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`start in <span class="subst">$&#123;start&#125;</span>`</span>)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`the destination is <span class="subst">$&#123;finish&#125;</span>`</span>)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">`stopping <span class="subst">$&#123;stops.length&#125;</span> times in between`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    directions(<span class="string">"Truckee"</span>, <span class="string">"Tahoe City"</span>, <span class="string">"Sunnyside"</span>, <span class="string">"Homewood"</span>, <span class="string">"Tahoma"</span>)</span><br></pre></td></tr></table></figure>
+<p>（5）适用于对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> morning = &#123;</span><br><span class="line">  breakfast: <span class="string">"oatmeal"</span>,</span><br><span class="line">  lunch: <span class="string">"peanut butter and jelly"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> dinner = <span class="string">"mac and cheese"</span></span><br><span class="line"><span class="keyword">var</span> backpackingMeals = &#123;</span><br><span class="line">  ...morning,</span><br><span class="line">  dinner</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(backpackingMeals)</span><br></pre></td></tr></table></figure>
+<h4 id="Promise对象"><a href="#Promise对象" class="headerlink" title="Promise对象"></a>Promise对象</h4><p>1 介绍<br>Promise提供了一种更合理的方式处理异步行为,then函数可以通过链式调用执行某些任务，还可以使用另一个回调函数处理异常</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getFakeMembers = <span class="function"><span class="params">count</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolves, rejects</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> api = <span class="string">`https://api.randomuser.me/?nat=US&amp;results=<span class="subst">$&#123;count&#125;</span>`</span></span><br><span class="line">      <span class="keyword">const</span> request = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">      request.open(<span class="string">'GET'</span>, api)</span><br><span class="line">      request.onload = <span class="function"><span class="params">()</span> =&gt;</span></span><br><span class="line">           (request.status === <span class="number">200</span>) ?</span><br><span class="line">            resolves(<span class="built_in">JSON</span>.parse(request.response).results) :</span><br><span class="line">            rejects(<span class="built_in">Error</span>(request.statusText))</span><br><span class="line">      request.onerror = <span class="function">(<span class="params">err</span>) =&gt;</span> rejects(err)</span><br><span class="line">      request.send()</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    getFakeMembers(<span class="number">5</span>).then(</span><br><span class="line">      members =&gt; <span class="built_in">console</span>.log(members),</span><br><span class="line">      err =&gt; <span class="built_in">console</span>.error(</span><br><span class="line">          <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"cannot load members from randomuser.me"</span>))</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><p>1 背景介绍：<br>以前javascript没有类的概念，类型定义通过函数完成，创建一个函数，通过原型在函数对象上定义方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Constructor and the prototype, the old way</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Vacation</span>(<span class="params">destination, length</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.destination = destination</span><br><span class="line">  <span class="keyword">this</span>.length = length</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Vacation.prototype.print = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.destination + <span class="string">" will take "</span> + <span class="keyword">this</span>.length + <span class="string">" days"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> maui = <span class="keyword">new</span> Vacation(<span class="string">"Maui"</span>, <span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">maui.print()</span><br></pre></td></tr></table></figure>
+<p>2 新增语法<br>工作机制相同，函数即对象，继承通过原型机制实现    </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vacation</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">constructor</span>(destination, length) &#123;</span><br><span class="line">  <span class="keyword">this</span>.destination = destination</span><br><span class="line">  <span class="keyword">this</span>.length = length</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print() &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.destination&#125;</span> will take <span class="subst">$&#123;<span class="keyword">this</span>.length&#125;</span> days.`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> trip = <span class="keyword">new</span> Vacation(<span class="string">"Santiago, Chile"</span>, <span class="number">9</span>)</span><br><span class="line"></span><br><span class="line">trip.print()</span><br></pre></td></tr></table></figure>
+<p>3 类的继承<br>不仅可以直接继承，还可将类当做抽象类，添加新参数</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Vacation &#123;</span><br><span class="line">      <span class="keyword">constructor</span>(<span class="params">destination, length</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.destination = destination</span><br><span class="line">        <span class="keyword">this</span>.length = length</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      print() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.destination&#125;</span> will take <span class="subst">$&#123;<span class="keyword">this</span>.length&#125;</span> days.`</span>)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> Expedition <span class="keyword">extends</span> Vacation &#123;</span><br><span class="line">      <span class="keyword">constructor</span>(<span class="params">destination, length, gear</span>) &#123;</span><br><span class="line">        <span class="keyword">super</span>(destination, length)</span><br><span class="line">        <span class="keyword">this</span>.gear = gear</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      print() &#123;</span><br><span class="line">        <span class="keyword">super</span>.print()</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`bring your <span class="subst">$&#123;<span class="keyword">this</span>.gear.join(<span class="string">" and your "</span>)&#125;</span>`</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> trip = <span class="keyword">new</span> Expedition(</span><br><span class="line">      <span class="string">"Mt. Whitney"</span>,</span><br><span class="line">      <span class="number">3</span>,</span><br><span class="line">      [<span class="string">"sunglasses"</span>, <span class="string">"prayer flags"</span>, <span class="string">"camera"</span>]</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    trip.print()</span><br></pre></td></tr></table></figure>
+<h4 id="ES6模块"><a href="#ES6模块" class="headerlink" title="ES6模块"></a>ES6模块</h4><p>1 介绍<br>ES6规范的javascript为模块提供了支持，javascript模块可以存储在独立的文件中，一个文件对应一个模块，<br>创建和导出一个模块中的数据有两种方式，用户可以从一个模块中导出一个或多个javascript对象<br>2 export<br>关键字export可以用来导出会在其他模块中用到的任意javascrip类型数据，其他变量将会以局部变量的形式存在。<br>当值导出一个变量或导出的数据值包含一种类型时，用户可以使用export default 替换export<br>3 import<br>与export相对，在其他javascript文件中调用模块：<br>（1）包含多个export语句的模块还可以进行对象解构<br>（2）使用export default的模块还可以被导入到单个变量中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> freel <span class="keyword">from</span> <span class="string">'/test'</span></span><br></pre></td></tr></table></figure>
+<p>（3）可以使用别名实现模块变量的本地化</p>
+<h4 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h4><p>1 介绍：<br>CommonJs是所有版本的node.js都支持的模块模式。用户可以通过Babel和webpack使用，导出使用module.export;<br>CommonJs不支持imporr语句，使用require进行模块导入</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.hexiaojiao.top/2019/07/08/react_01/" data-id="cka4vkt3s004jg4am8e2g3aww" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-LANP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/28/LANP/" class="article-date">
+  <time datetime="2019-04-28T06:00:40.000Z" itemprop="datePublished">2019-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/28/LANP/">virtualbox搭建LANP环境（ubuntu）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-基础软件下载"><a href="#1-基础软件下载" class="headerlink" title="1 基础软件下载"></a>1 基础软件下载</h2><p>virtual box<br>ubuntu(ubuntu server)</p>
+<h2 id="2-安装ubuntu"><a href="#2-安装ubuntu" class="headerlink" title="2 安装ubuntu"></a>2 安装ubuntu</h2><p>(1)virtualbox创建虚拟电脑<br>注意：最好重新设置virtualbox-&gt;管理-&gt;全局设定-&gt;默认虚拟电脑位置<br>(2)启动，网络设置成网络地址转换(NAT)<br>(3)重启的时候需要弹出U盘或者改变镜像位置<br>(4)如果提示未指定nat网络名称，管理-&gt;全局设定-&gt;网络-&gt;nat网络（添加一条）<br>(5)</p>
+<h2 id="3-配置ssh"><a href="#3-配置ssh" class="headerlink" title="3 配置ssh"></a>3 配置ssh</h2><p>(1)添加端口映射（例如2222-&gt;22）,注意主机端口不可重复，且子系统ip不填<br>(2)ubuntu安装ssh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br></pre></td></tr></table></figure>
+<p>(3)xshell等工具连接，端口号为转发的主机端口</p>
+<h2 id="4-安装php-nginx-Mysql"><a href="#4-安装php-nginx-Mysql" class="headerlink" title="4 安装php nginx Mysql"></a>4 安装php nginx Mysql</h2><p>(1)安装php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install php7.0</span><br></pre></td></tr></table></figure>
+<p>(2)安装nginx</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nginx</span><br></pre></td></tr></table></figure>
+<p>(3)安装Mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-server-5.7 mysql-client-5.7</span><br></pre></td></tr></table></figure>
+<h2 id="5-基础配置"><a href="#5-基础配置" class="headerlink" title="5 基础配置"></a>5 基础配置</h2><p>(1)安装PHPFastCGI管理器<br>sudo apt install php7.2-fpm</p>
+<h2 id="6其他tips"><a href="#6其他tips" class="headerlink" title="6其他tips"></a>6其他tips</h2><p>(1)配置sudo<br>修改 /etc/sudoers，末尾添加一行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test    ALL&#x3D;(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure>
+<p>test表示用户名；<br>保存退出后执行一下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG test test</span><br></pre></td></tr></table></figure>
+<p>(2)配置共享文件夹且自启动<br>1 virtualbox(设置-共享文件夹-勾选固定分配(不勾选自动挂载))<br>2 ubuntu创建文件夹<br>3 挂载共享文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -t vboxsf filesname &#x2F;mnt&#x2F;filesname</span><br></pre></td></tr></table></figure>
+<p><strong>报错</strong><br>可能报错wrong fs type, bad option, bad superblock<br>，经过搜索需要安装<code>apt-get install nfs-common</code><br>但是安装后依旧报错，查看系统日志，报错信息如下：<br><img src="/images/mysqlIndex/error.png" alt="explain"><br>只查到了一条有用的记录，且是英文的，原来这是virtualbox的一个bug，我记得virtualbox还有一个bug,就是不能在共享文件夹里使用python的虚拟环境，但是这版直接共享文件夹都不能挂载了。路径如下：<br><a href="https://www.virtualbox.org/ticket/9307" target="_blank" rel="noopener" title="virtualbox bug">virtualbox bug</a><br>再安装两个插件即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install cifs-utils</span><br><span class="line">sudo apt install virtualbox-guest-utils</span><br></pre></td></tr></table></figure>
+<p>4 共享文件挂载自启动<br>(3)配置rsa<br>1 windows生成私钥</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &lt;your_email@example.com&gt;</span><br></pre></td></tr></table></figure>
+<p>2 git配置<br>在git配置上加上公钥<br>3 linux配置对应rsa<br>进入当前用户的home目录(~)，创建.ssh文件夹,复制私钥到文件夹下，进入项目目录，即可执行git clone(可能权限不够，可以暂时把项目目录设置成777)</p>
+<h2 id="7-配置"><a href="#7-配置" class="headerlink" title="7 配置"></a>7 配置</h2><h4 id="1-配置nginx"><a href="#1-配置nginx" class="headerlink" title="1 配置nginx"></a>1 配置nginx</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;nginx&#x2F;sites-enabled&#x2F;default</span><br><span class="line">&#x2F;&#x2F;需要给默认index加上index.php</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.hexiaojiao.top/2019/04/28/LANP/" data-id="cka4vkt1t000vg4am6tec7ou6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-docker" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/24/docker/" class="article-date">
+  <time datetime="2019-04-24T13:03:10.000Z" itemprop="datePublished">2019-04-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/docker/">docker</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/24/docker/">docker使用心得</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h4 id="1-前提条件"><a href="#1-前提条件" class="headerlink" title="1 前提条件"></a>1 前提条件</h4><p>ubuntu内核版本高于 3.10  <code>uname -r</code></p>
+<h4 id="2-安装docker"><a href="#2-安装docker" class="headerlink" title="2 安装docker"></a>2 安装docker</h4><p>本文是基于ubuntu的，基于centos安装路径博客如下：<br><a href="http://www.runoob.com/docker/centos-docker-install.html" target="_blank" rel="noopener" title="centos">centos</a><br><a href="http://www.runoob.com/docker/windows-docker-install.html" target="_blank" rel="noopener" title="windows">windows</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- https:&#x2F;&#x2F;get.docker.com&#x2F; | sh</span><br></pre></td></tr></table></figure>
+<p>当要以非root用户可以直接运行docker时，需要执行 sudo usermod -aG docker runoob 命令，然后重新登陆<br>启动docker服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service docker start</span><br></pre></td></tr></table></figure>
+<p><strong>测试运行hello world</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
+<p><strong>镜像加速</strong><br>路径：<code>/etc/docker/daemon.json</code><br>配置文件中加入(不存在则创建，我本地不存在此文件)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;http:&#x2F;&#x2F;hub-mirror.c.163.com&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p><strong>hello world</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run ubuntu:15.10 &#x2F;bin&#x2F;echo &quot;Hello world&quot;</span><br></pre></td></tr></table></figure>
+<p>(验证,echo是可以直接echo的，不必写/bin/echo)<br><strong>参数解析</strong><br>docker:docker的二进制执行文件<br>run:与前面docker组合来运行一个容器<br>ubuntu:15.10 : 指定要运行的镜像，Docker首先从本地主机上查找镜像是否存在，如果不存在，Docker 就会从镜像仓库 Docker Hub 下载公共镜像。<br>/bin/echo “Hello world”: 在启动的容器里执行的命令<br><strong>运行交互式的容器</strong><br>通过docker的两个参数 -i -t，让docker运行的容器实现”对话”的能力</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -i -t ubuntu:15.10 &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+<p>-t:在新容器内指定一个伪终端或终端。<br>-i:允许对容器内的标准输入进行交互<br><strong>启动容器（后台模式）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d ubuntu:15.10 &#x2F;bin&#x2F;sh -c &quot;while true; do echo hello world; sleep 1; done&quot;</span><br></pre></td></tr></table></figure>
+<p>输出一串长字符，是容器ID,对每个容器来说都是唯一的，我们可以通过容器ID来查看对应的容器发生了什么。</p>
+<figure class="highlight docker"><figcaption><span>ps```可以查看有容器在运行</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CONTAINER ID:容器ID</span><br><span class="line">NAMES:自动分配的容器名称</span><br><span class="line">在容器内使用docker logs命令，查看容器内的标准输出</span><br><span class="line">```docker logs [CONTAINER ID|NAMES]</span><br></pre></td></tr></table></figure>
+<p><strong>停止容器</strong><br><code>docker stop [CONTAINER ID|NAMES]</code><br>(亲测不需要sudo就能停止docker,但是docker ps却需要sudo)<br>##docker容器使用<br><code>docker</code>命令可以直接查看Docker客户端的所有选项<br><code>docker comman --help</code>更深入地了解指定地docker命令使用方法</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.hexiaojiao.top/2019/04/24/docker/" data-id="cka4vkt2n002jg4am6nayah08" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" rel="tag">使用心得</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-git" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/24/git/" class="article-date">
+  <time datetime="2019-04-24T13:03:10.000Z" itemprop="datePublished">2019-04-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/24/git/">gitflow command version</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="新建feature-hotfix进行项目开发"><a href="#新建feature-hotfix进行项目开发" class="headerlink" title="新建feature/hotfix进行项目开发"></a>新建feature/hotfix进行项目开发</h2><hr>
+<p>更新本地代码仓库缓存<br><code>git remote update</code><br><code>git checkout develop</code><br><code>git merge origin/develop</code><br><code>git branch feature/20171012_hotel_enhance</code></p>
+<p>##补充<br>1 删除分支<br>git branch –delete –remotes origin/feature/20190214_monthly<br>git push origin :feature/20190214_monthly<br>2 add之后回退<br>git reset HEAD <file><br>3 撤销commit<br>git commit –amend<br>4 撤销已经commit但是没有push<br>git log 找到commit id<br>git reset –hard commit_id    完成撤销,同时将代码恢复到前一commit_id 对应的版本<br>git reset commit_id      完成Commit命令的撤销，但是不对代码修改进行撤销，可以直接通过git commit 重新提交对本地代码的修改</p>
+<h2 id="git-fetch"><a href="#git-fetch" class="headerlink" title="git fetch"></a>git fetch</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.hexiaojiao.top/2019/04/24/git/" data-id="cka4vkt2t002vg4am4x6be6ln" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-githubGuide" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/24/githubGuide/" class="article-date">
+  <time datetime="2019-04-24T13:03:10.000Z" itemprop="datePublished">2019-04-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/24/githubGuide/">gitflow command version</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.hexiaojiao.top/2019/04/24/githubGuide/" data-id="cka4vkt2y0036g4amh47jf40a" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Log" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/11/Log/" class="article-date">
+  <time datetime="2019-04-11T07:23:44.000Z" itemprop="datePublished">2019-04-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/11/Log/">Laravel 日志系统</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-（自己摸索版本）5-2"><a href="#1-（自己摸索版本）5-2" class="headerlink" title="1 （自己摸索版本）5.2"></a>1 （自己摸索版本）5.2</h2><h4 id="1-定义路径"><a href="#1-定义路径" class="headerlink" title="1 定义路径"></a>1 定义路径</h4><p>.env配置文件添加日志路径，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOG_PATH&#x3D;&#x2F;tmp&#x2F;paytest</span><br></pre></td></tr></table></figure>
+<h4 id="2-启动文件添加日志路径"><a href="#2-启动文件添加日志路径" class="headerlink" title="2 启动文件添加日志路径"></a>2 启动文件添加日志路径</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$app-&gt;configureMonologUsing(<span class="function"><span class="keyword">function</span><span class="params">($logger)</span></span>&#123;</span><br><span class="line">    $logger-&gt;pushHandler(<span class="keyword">new</span> \Monolog\Handler\RotatingFileHandler(env(<span class="string">'LOG_PATH'</span>).<span class="string">'.log'</span>), <span class="number">10</span>);</span><br><span class="line">    <span class="keyword">return</span> $logger;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="2-官方文档"><a href="#2-官方文档" class="headerlink" title="2 官方文档"></a>2 官方文档</h2><h4 id="1-异常处理"><a href="#1-异常处理" class="headerlink" title="1 异常处理"></a>1 异常处理</h4><p><strong>介绍</strong><br>当您启动一个新的 Laravel 项目时，错误和异常处理就已为您配置。 应用程序触发的所有异常都被 App\Exceptions\Handler 类记录下来，然后渲染给用户。 我们将在本文档中深入介绍此类。<br><strong>配置</strong><br>（1）config/app.php 文件的 debug 选项，决定了是否向用户显示错误信息。默认情况下，此选项设置为存储在 .env 文件中的  APP_DEBUG 环境变量中。<br>（2）Laravel 支持 single 、daily 、 syslog 和 errorlog 日志模式。要配置 Laravel 使用的存储机制，应该修改 config/app.php 配置文件中的 log 选项。例如，如果您希望使用每日一个日志文件而不是单个文件，则应将 app 配置文件中的 log 值设置为 daily<br><strong>日志等级</strong><br>使用 Monolog 时，日志消息可能具有不同的日志等级。默认情况下，Laravel 将所有日志级别写入存储。但是，在生产环境中，您可能希望通过将 log_level 选项添加到 app.php 配置文件中来配置应记录的最低日志等级。</p>
+<p>一旦配置了此选项，Laravel 将记录大于或等于指定日志等级的所有级别。例如，默认将 log_level 设置为 error 那么将会记录 error , critical , alert 和 emergency 日志信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#39;log_level&#39; &#x3D;&gt; env(&#39;APP_LOG_LEVEL&#39;, &#39;error&#39;),</span><br></pre></td></tr></table></figure>
+<p><strong>注意事项</strong><br> Monolog 识别以下日志等级 - 从低到高为: debug , info , notice , warning , error , critical , alert , emergency<br><strong>Report方法</strong><br>所有异常都由 App\Exceptions\Handler 类处理。 这个类包含两个方法：report 和 render 。 我们将详细研究这些方法。 report 方法用于记录异常或将其发送到外部服务，如 Bugsnag 或 Sentry 。默认情况下，report 方法只是将异常传递给记录异常的基类。然而，你可以自由选择任何方式进行处理。<br><strong>render方法</strong><br>render 方法负责将异常转换成 HTTP 响应发送给浏览器。默认情况下，异常会传递给为您生成响应的基类。但是，您可以自由检查异常类型或返回您自己的自定义响应</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 渲染异常并添加到 HTTP 响应中。</span><br><span class="line"> *</span><br><span class="line"> * @param  \Illuminate\Http\Request  $request</span><br><span class="line"> * @param  \Exception  $exception</span><br><span class="line"> * @return \Illuminate\Http\Response</span><br><span class="line"> *&#x2F;</span><br><span class="line">public function render($request, Exception $exception)</span><br><span class="line">&#123;</span><br><span class="line">    if ($exception instanceof CustomException) &#123;</span><br><span class="line">        return response()-&gt;view(&#39;errors.custom&#39;, [], 500);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return parent::render($request, $exception);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>HTTP异常</strong><br>可直接用abort()，例如abort(404),abort(403, ‘Unauthorized action.’);<br><strong>自定义错误页面</strong><br>如果您要自定义404 HTTP状态代码的错误页面，请创建一个 resources/views/errors/404.blade.php 。此文件将会用于渲染所有404错误。此目录中的视图文件命名应与它们对应的HTTP状态代码匹配。由 abort 函数引发的 HttpException 实例将作为 $exception 变量传递给视图。</p>
+<h4 id="2-记录"><a href="#2-记录" class="headerlink" title="2 记录"></a>2 记录</h4><p><strong>介绍</strong><br>默认情况下，Laravel 日志目录为 storage/logs<br>可以传递参数，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$test &#x3D; &quot;test&quot;;</span><br><span class="line">Log::info(222222222, [&#39;te&#39; &#x3D;&gt; $test]);</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.hexiaojiao.top/2019/04/11/Log/" data-id="cka4vkt1w0011g4am74ls22w0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode%E5%88%B7%E9%A2%98/">Leetcode刷题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/crontab/">crontab</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8/">代码大全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/">代码整洁之道</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/react/">react</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/react/json-patch/">json-patch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/typescript/">typescript</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E4%BD%9C%E7%BB%8F%E9%AA%8C/">工作经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BF%AB%E6%8D%B7%E9%94%AE/">快捷键</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/linux/%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/">文件相关</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/linux/%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3/">系统相关</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Hbase/">Hbase</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%89%E7%94%A8%E4%BB%A3%E7%A0%81%E6%AE%B5%E6%94%B6%E9%9B%86/">有用代码段收集</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%89%8D%E8%A8%80/">前言</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">面向对象设计原则</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/demo/" rel="tag">demo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/" rel="tag">go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/" rel="tag">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%98%E5%8C%96/" rel="tag">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" rel="tag">使用心得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" rel="tag">基础命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E5%B7%A5%E5%85%B7/" rel="tag">小工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C%E7%BB%8F%E9%AA%8C/" rel="tag">工作经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E6%A1%A3/" rel="tag">文档</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D/" rel="tag">概念介绍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/demo/" style="font-size: 10px;">demo</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/tips/" style="font-size: 12.5px;">tips</a> <a href="/tags/%E4%BC%98%E5%8C%96/" style="font-size: 10px;">优化</a> <a href="/tags/%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" style="font-size: 10px;">使用心得</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" style="font-size: 10px;">基础命令</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">学习</a> <a href="/tags/%E5%B0%8F%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">小工具</a> <a href="/tags/%E5%B7%A5%E4%BD%9C/" style="font-size: 15px;">工作</a> <a href="/tags/%E5%B7%A5%E4%BD%9C%E7%BB%8F%E9%AA%8C/" style="font-size: 10px;">工作经验</a> <a href="/tags/%E6%96%87%E6%A1%A3/" style="font-size: 12.5px;">文档</a> <a href="/tags/%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D/" style="font-size: 17.5px;">概念介绍</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/07/design_pattern02/">设计模式从头学习-面向对象设计原则概述</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/design_patter01/">设计模式从头学习-前言</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/21/docker01/">《第一本docker书》学习笔记01</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/16/multiArr/">php多维数组相关处理</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/27/linuxOpe/">linux命令大全</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Laurel He<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

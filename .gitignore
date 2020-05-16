@@ -9,4 +9,5 @@ coverage
 **/api_data.js
 dist/
 tmp/
+themes/
 .docker

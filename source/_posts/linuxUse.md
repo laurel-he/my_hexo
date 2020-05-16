@@ -20,8 +20,8 @@ categories:
 -v 或 –show-nonprinting    
 **举例**
 1 从键盘创建一个文件：    
-![towrow](linux/cat1.png)
+![towrow](/images/linux/cat1.png)
 2 将几个文件合并成一个文件：        
-![towrow](linux/cat2.png)
+![towrow](/images/linux/cat2.png)
 ### cd
 **描述**

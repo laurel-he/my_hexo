@@ -13,15 +13,15 @@ explain select … from … [where ...]
 ```
 explain select * from news;
 ```
-![explain](mysqlIndex/exp.png)
+![explain](/images/mysqlIndex/exp.png)
 
 只查询一行数据：
-![const](mysqlIndex/const.png)
+![const](/images/mysqlIndex/const.png)
 
 查询多行数据：执行查询
-![towrow](mysqlIndex/towrow.png)
+![towrow](/images/mysqlIndex/towrow.png)
 执行explain:
-![towrowres](mysqlIndex/towrowres.png)
+![towrowres](/images/mysqlIndex/towrowres.png)
 
 ## 2 属性详解
 | 属性 | 作用 | 

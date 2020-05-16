@@ -161,7 +161,7 @@ db.getCollection('test').aggregate(
 #### accumulator操作符
 
 | 名称 |描述 |类比sql
-|  ----  | ----  | ---- |
+| --- | --- | --- |
 | $avg	        |计算均值     	                                                            |avg
 | $first        |返回每组第一个文档，如果有排序，按照排序，如果没有按照默认的存储的顺序的第一个文档。	|limit 0,1
 | $last	        |返回每组最后一个文档，如果有排序，按照排序，如果没有按照默认的存储的顺序的最后个文档。	|-
@@ -172,6 +172,7 @@ db.getCollection('test').aggregate(
 | $sum	        |计算总和	                                                                |sum
 | $stdDevPop	|返回输入值的总体标准偏差（population standard deviation）	                    |-
 | $stdDevSamp	|返回输入值的样本标准偏差（the sample standard deviation）	                    |-
+
 #### 注意事项
 （1）$group阶段的内存限制为100M，默认情况下，如果stage超过此限制，$group将产生错误，但是，要允许处理大型数据集，需要将allowDiskUse选项设置为true以启用$group操作写入临时文件    
 （2）"$addToSet": expr如果当前数组中不包含expr，那就将它添加到数组中    

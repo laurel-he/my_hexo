@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>vim学习笔记 | 贺小娇的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="光标移动h 或 &lt;- 表示向左j 下k 上l 右 ctrl + f     屏幕向下移动一页ctrl + b     向上移动一页ctrl + d     向下移动半页ctrl + u     向上移动半页‘+’          光标移动到非空格符的下一行‘-‘          光标移动到非空格符的n[space]   n表示数字，光标向右移动n个字符0或[Home]  移动到这一行最开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim学习笔记">
+<meta property="og:url" content="http://www.hexiaojiao.top/2019/02/28/vim/index.html">
+<meta property="og:site_name" content="贺小娇的博客">
+<meta property="og:description" content="光标移动h 或 &lt;- 表示向左j 下k 上l 右 ctrl + f     屏幕向下移动一页ctrl + b     向上移动一页ctrl + d     向下移动半页ctrl + u     向上移动半页‘+’          光标移动到非空格符的下一行‘-‘          光标移动到非空格符的n[space]   n表示数字，光标向右移动n个字符0或[Home]  移动到这一行最开">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-02-28T08:34:10.000Z">
+<meta property="article:modified_time" content="2020-04-16T06:34:50.000Z">
+<meta property="article:author" content="Laurel He">
+<meta property="article:tag" content="文档">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="贺小娇的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">贺小娇的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.hexiaojiao.top"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-vim" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/28/vim/" class="article-date">
+  <time datetime="2019-02-28T08:34:10.000Z" itemprop="datePublished">2019-02-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%BF%AB%E6%8D%B7%E9%94%AE/">快捷键</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vim学习笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="光标移动"><a href="#光标移动" class="headerlink" title="光标移动"></a>光标移动</h2><p>h 或 &lt;- 表示向左<br>j 下<br>k 上<br>l 右</p>
+<p>ctrl + f     屏幕向下移动一页<br>ctrl + b     向上移动一页<br>ctrl + d     向下移动半页<br>ctrl + u     向上移动半页<br>‘+’          光标移动到非空格符的下一行<br>‘-‘          光标移动到非空格符的<br>n[space]   n表示数字，光标向右移动n个字符<br>0或[Home]  移动到这一行最开始的字符处<br>$或[End]   移动到这一行的最后面字符处<br>H          移动到这个屏幕最上方一行的第一个字符<br>M          移动到这个屏幕中央一行的第一个字符<br>L          移动到这个屏幕最下方一行的第一个字符<br>G          移动到这个文件的最后一行<br>nG(:n)     移动到这个文件的第n行<br>gg(1G)     移动到第一行<br>n[Enter]   n为数字，表示向下移动n行</p>
+<h2 id="查找与替换"><a href="#查找与替换" class="headerlink" title="查找与替换"></a>查找与替换</h2><p>/word 光标之下寻找名为word的字符串<br>?word 光标之上寻找名为word的字符串<br>n     重复前一个查找的操作<br>N     反向进行前一个查找操作<br>:n1,n2s/word1/word2/g    n1和n2是数字，在n1和n2行之间查找所有word,替换成word2<br>:1,$s/word1/word2/g<br>:1,$s/word1/word2/gc     c代表confirm,替换前显示确认信息</p>
+<h2 id="删除复制与粘贴"><a href="#删除复制与粘贴" class="headerlink" title="删除复制与粘贴"></a>删除复制与粘贴</h2><p>x       向后删除<br>X       向前删除<br>nx      向后删除n个字符<br>dd      删除（剪切）光标所在一整行<br>ndd     删除向下n行<br>d1G     删除光标所在到第一行的数据<br>dG      删除光标所在到最后一行的数据<br>d$      删除光标所在处，到该行最后一个字符<br>d0<br>yy      复制该行<br>nyy<br>y1G<br>yG<br>y0<br>y$<br>p       将已复制的数据在光标下一行粘贴<br>P       上一行<br>J       光标所在行与下一行数据结合成同一行<br>c       重复删除多个数据(10cj代表向下删除10行)删除后切换到编辑模式<br>u       回复<br>ctrl+r  重做<br>.       重复前一次操作</p>
+<h2 id="进入插入或替换的编辑模式"><a href="#进入插入或替换的编辑模式" class="headerlink" title="进入插入或替换的编辑模式"></a>进入插入或替换的编辑模式</h2><p>i I     i从目前光标所在处插入，I目前所在行的第一个非空格字符处开始插入<br>a A     a 从目前光标所在的下一个字符处开始插入,A从光标所在行的最后一个字符处开始插入<br>o O     o 在目前光标所在行的下一行处插入新行  O上一行<br>r R     r 替换一次 R 一直替换直到按Esc</p>
+<h2 id="一般命令模式切换到命令模式"><a href="#一般命令模式切换到命令模式" class="headerlink" title="一般命令模式切换到命令模式"></a>一般命令模式切换到命令模式</h2><p>ZZ      若文件没有被修改则不保存退出，修改了则保存后退出<br>:w [filename] 将编辑的数据保存成另一个新文件<br>:r [filename] 读入另一个文件的数据，加在光标所在行后面<br>:n1, n2 w [filename] 将n1到n2的内容保存到文件<br>:! command 暂时退出vi到命令行模式下执行command的显示结果（:! ls /home）<br>:set nu<br>:set nonu<br>:e! 还原文件内容事实上，可以使用[ :! ls /home ]不过，如果你学过后面的章节之后，你会发现，执行[ ctrl + z ]亦可暂时退出 vi 让你在命令行</p>
+<p>##多行添加数据</p>
+<p><strong>方法一：块选择模式</strong><br>（1）v 进入virtual模式<br>（2）上下键选择需要注释的行数<br>（3）ctrl+v 进入列模式<br>（4）大写I进入插入模式，输入要编辑的符号<br>（5）立即按下两次ESC<br><strong>方法二：替换命令</strong><br>：起始行号，结束行号s/^/注释符/g<br>取消注释：<br>:起始行号,结束行号s/^注释符//g</p>
+<p>####编辑多行</p>
+<p>ctrl+v进入visual block模式，按两次j或者2j，将光标移动到要插入的最后一行，按下i进入编辑模式。输入内容，Esc退出</p>
+<p>##多文件编辑</p>
+<p>:n 编辑下一个文件<br>:N 编辑上一个文件<br>:files 列出目前这个vim打开的所有文件<br>（nyy复制后，使用p粘贴）</p>
+<p>##多窗口功能</p>
+<p><strong>分区窗口并放入文件</strong><br>:sp {filename}</p>
+<h4 id="按键功能介绍"><a href="#按键功能介绍" class="headerlink" title="按键功能介绍"></a>按键功能介绍</h4><p>:sp [filename] 打开一个新窗口，如果加filename表示打开另一个文件，否则打开自身<br>[ctrl] + w + j 或[ctrl] + w + ↓：先按住ctrl键不放，按下w后放开，之后再按↓或↑<br>ctrl + w + q 相当于切换到某个窗口，按下:q离开，也可以直接ctrl+w+q</p>
+<p>##vim的挑字补全功能</p>
+<p>ctrl + x -&gt; ctrl + n 通过正在编辑的这个文件的内容文字作为关键组予以补齐<br>ctrl + x -&gt; ctrl + f 以当前目录的文件名作为关键字予以补齐<br>ctrl + x -&gt; ctrl + o 以扩展名作为语法补充，以vim内置的关键字予以补齐</p>
+<h4 id="vim-自动补全报错option-‘omnifunc’-is-not-set"><a href="#vim-自动补全报错option-‘omnifunc’-is-not-set" class="headerlink" title="vim 自动补全报错option ‘omnifunc’ is not set"></a>vim 自动补全报错option ‘omnifunc’ is not set</h4><p>编辑vimrc文件，加入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">autocmd FileType python set omnifunc&#x3D;pythoncomplete#Complete</span><br><span class="line">autocmd FileType javascript set omnifunc&#x3D;javascriptcomplete#CompleteJS</span><br><span class="line">autocmd FileType html set omnifunc&#x3D;htmlcomplete#CompleteTags</span><br><span class="line">autocmd FileType css set omnifunc&#x3D;csscomplete#CompleteCSS</span><br><span class="line">autocmd FileType xml set omnifunc&#x3D;xmlcomplete#CompleteTags</span><br><span class="line">autocmd FileType php set omnifunc&#x3D;phpcomplete#CompletePHP</span><br><span class="line">autocmd FileType c set omnifunc&#x3D;ccomplete#Complete</span><br></pre></td></tr></table></figure>
+
+<p>##编码转换</p>
+<p>iconv list:列出所有的编码<br>iconv -f 原本编码 -t 新编码 filename [-o newfilw]<br>##vim的环境设置参数</p>
+<p>:set no或者:set number<br>:set hlsearch 设置高亮度搜寻<br>:set nohlsearch<br>:set autoindent 自动缩进<br>:set noautoindent 设置不自动缩进<br>:set backup 设置自动储存备份文件，一般设置为nobackup，如果为backup，每次更改一个文件时会自动产生一个<code>filename~</code>文件记录原始文件内容<br>:set ruler 显示右下角状态列<br>:set showmode 是否要显示–INSERT–之类的字眼<br>:set backspace=(012) 某些distribution不允许使用backspace删除字符，当设置值为2可以删除任意值，为0或1时，只能删除刚才输入的<br>:set all 显示目前所有的环境参数设置值<br>:set 显示与系统默认值不同的设置参数<br>:syntax on 程序相关语法显示不同颜色<br>:syntax off<br>:set bg=dark 显示不同的颜色色调<br>:set bg=light 编辑’~/.vimrc’文件，有或没有冒号都可以</p>
+<p>##其他相关操作<br><strong>virtualbox添加共享文件</strong><br>1 设置-添加共享文件，选择固定分配<br>2 添加挂载：sudo mount -t vboxsf rezb2b /mnt/rezb2b<br>3 自启动挂载命令：sudo vim /etc/rc.local 添加命令</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.hexiaojiao.top/2019/02/28/vim/" data-id="cka4vkt4n005jg4ambx3261vq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%87%E6%A1%A3/" rel="tag">文档</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/03/02/20190214/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Monthly报表完成步骤
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/28/20190227/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hbase基础命令</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode%E5%88%B7%E9%A2%98/">Leetcode刷题</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/crontab/">crontab</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8/">代码大全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/">代码整洁之道</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/react/">react</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/react/json-patch/">json-patch</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/typescript/">typescript</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E4%BD%9C%E7%BB%8F%E9%AA%8C/">工作经验</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BF%AB%E6%8D%B7%E9%94%AE/">快捷键</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/linux/%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/">文件相关</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/linux/%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3/">系统相关</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Hbase/">Hbase</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/">mysql</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%89%E7%94%A8%E4%BB%A3%E7%A0%81%E6%AE%B5%E6%94%B6%E9%9B%86/">有用代码段收集</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%89%8D%E8%A8%80/">前言</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">面向对象设计原则</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/demo/" rel="tag">demo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/" rel="tag">go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tips/" rel="tag">tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%98%E5%8C%96/" rel="tag">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" rel="tag">使用心得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" rel="tag">基础命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E5%B7%A5%E5%85%B7/" rel="tag">小工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C%E7%BB%8F%E9%AA%8C/" rel="tag">工作经验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E6%A1%A3/" rel="tag">文档</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D/" rel="tag">概念介绍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/demo/" style="font-size: 10px;">demo</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/tips/" style="font-size: 12.5px;">tips</a> <a href="/tags/%E4%BC%98%E5%8C%96/" style="font-size: 10px;">优化</a> <a href="/tags/%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" style="font-size: 10px;">使用心得</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" style="font-size: 10px;">基础命令</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">学习</a> <a href="/tags/%E5%B0%8F%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">小工具</a> <a href="/tags/%E5%B7%A5%E4%BD%9C/" style="font-size: 15px;">工作</a> <a href="/tags/%E5%B7%A5%E4%BD%9C%E7%BB%8F%E9%AA%8C/" style="font-size: 10px;">工作经验</a> <a href="/tags/%E6%96%87%E6%A1%A3/" style="font-size: 12.5px;">文档</a> <a href="/tags/%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D/" style="font-size: 17.5px;">概念介绍</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/07/design_pattern02/">设计模式从头学习-面向对象设计原则概述</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/07/design_patter01/">设计模式从头学习-前言</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/21/docker01/">《第一本docker书》学习笔记01</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/16/multiArr/">php多维数组相关处理</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/27/linuxOpe/">linux命令大全</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Laurel He<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

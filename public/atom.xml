@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>贺小娇的博客</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.hexiaojiao.top/"/>
+  <updated>2020-05-07T12:30:45.000Z</updated>
+  <id>http://www.hexiaojiao.top/</id>
+  
+  <author>
+    <name>Laurel He</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设计模式从头学习-面向对象设计原则概述</title>
+    <link href="http://www.hexiaojiao.top/2020/05/07/design_pattern02/"/>
+    <id>http://www.hexiaojiao.top/2020/05/07/design_pattern02/</id>
+    <published>2020-05-07T12:20:10.000Z</published>
+    <updated>2020-05-07T12:30:45.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://www.hexiaojiao.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="面向对象设计原则" scheme="http://www.hexiaojiao.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/"/>
+    
+    
+      <category term="学习" scheme="http://www.hexiaojiao.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>设计模式从头学习-前言</title>
+    <link href="http://www.hexiaojiao.top/2020/05/07/design_patter01/"/>
+    <id>http://www.hexiaojiao.top/2020/05/07/design_patter01/</id>
+    <published>2020-05-07T12:13:10.000Z</published>
+    <updated>2020-05-07T12:30:17.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>注意</strong><br>本文参考了书籍《大话设计模式》和文章<a href="https://blog.csdn.net/lovelion/article/details/7420866" target="_blank" rel="noopener">从招式与内功谈起——设计模式概述</a><br>#写作初衷<br>我有空的时候就会学习一下设计模式，零零散散半年过去了，真正能够静下心来学习<br>设计模式的事件少之又少，而且很多模式例如单例模式，命令模式等我学过后就忘了，让我现在再<br>复述或者使用我又需要重新去学一下，因此我抛弃以前学习的零零散散的与设计模式相关的东西，<br>尝试从头再学一次，边学边使用，并做好详细的笔记，以后可以直接翻阅。<br>#设计模式的作用<br>(1)设计模式经过多年的使用和实践，包含了大量成功的，可维护可复用的设计方案，在很多情况下，设计模式可以提高开发效率，节约时间<br>(2)设计模式跨语言、跨平台、跨应用、跨国界，提供了通用的词汇和使用方式，节约交流时间<br>(3)大部分设计模式都兼顾了系统的可重用性和扩展性，这使很多系统可以重用，减少代码重复<br>(4)合理使用设计模式有助于别人理解自己的代码<br>(5)有助于更为深刻地理解面对对象编程<br>#如何掌握设计模式<br>a.这个设计模式的意图是什么<br>b.它要解决一个什么问题<br>c.什么时候可以使用它<br>d.它是如何解决问题的<br>e.掌握它的结构图<br>f.记住它的关键代码<br>g.能够想到至少两个它的应用实例，一个生活中的，一个软件中的<br>h.这个模式的优缺点是什么<br>i.在使用时要注意什么<br>#注意事项<br>（1）最好的掌握设计模式的方法是使用它们<br>（2）千万不要滥用模式    </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;&lt;br&gt;本文参考了书籍《大话设计模式》和文章&lt;a href=&quot;https://blog.csdn.net/lovelion/article/details/7420866&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://www.hexiaojiao.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="前言" scheme="http://www.hexiaojiao.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%89%8D%E8%A8%80/"/>
+    
+    
+      <category term="学习" scheme="http://www.hexiaojiao.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《第一本docker书》学习笔记01</title>
+    <link href="http://www.hexiaojiao.top/2020/04/21/docker01/"/>
+    <id>http://www.hexiaojiao.top/2020/04/21/docker01/</id>
+    <published>2020-04-21T13:03:10.000Z</published>
+    <updated>2020-04-22T11:25:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Docker与配置管理"><a href="#Docker与配置管理" class="headerlink" title="Docker与配置管理"></a>Docker与配置管理</h1><h2 id="docker的核心组件"><a href="#docker的核心组件" class="headerlink" title="docker的核心组件"></a>docker的核心组件</h2><p>（1）docker客户端和服务器，也称为docker引擎<br>（2）docker镜像<br>（3）Registry<br>（4）Docker容器</p><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><h3 id="docker-info"><a href="#docker-info" class="headerlink" title="docker info"></a>docker info</h3><p>查看docker程序是否存在，功能是否正常</p><h3 id="docker-exec-docker-run"><a href="#docker-exec-docker-run" class="headerlink" title="docker exec(docker run)"></a>docker exec(docker run)</h3><p>docker run 命令提供了docker容器的创建到启动的功能<br>(1)-i:保证容器STDIN是开启的<br>(2)-t:为要撞见的容器分配一个伪tty终端<br>docker exec -it backend_jiapin /bi<br>n/bash</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Docker与配置管理&quot;&gt;&lt;a href=&quot;#Docker与配置管理&quot; class=&quot;headerlink&quot; title=&quot;Docker与配置管理&quot;&gt;&lt;/a&gt;Docker与配置管理&lt;/h1&gt;&lt;h2 id=&quot;docker的核心组件&quot;&gt;&lt;a href=&quot;#docker
+      
+    
+    </summary>
+    
+    
+      <category term="docker" scheme="http://www.hexiaojiao.top/categories/docker/"/>
+    
+    
+      <category term="学习" scheme="http://www.hexiaojiao.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php多维数组相关处理</title>
+    <link href="http://www.hexiaojiao.top/2020/04/16/multiArr/"/>
+    <id>http://www.hexiaojiao.top/2020/04/16/multiArr/</id>
+    <published>2020-04-16T10:27:44.000Z</published>
+    <updated>2020-04-21T06:11:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>在工作中遇到了两次需要把不确定维度的多维数组渲染出来的情况，且还需要修改值和结构，如果使用json-patch会受到限制（需要根据不同的情况打补丁，且由于结构不一定一致，打补丁可能会错误地修改某些文件），因此需要自行设计批量修改如yaml,json等类似于多级结构的方法</p><h2 id="具体解析"><a href="#具体解析" class="headerlink" title="具体解析"></a>具体解析</h2><h3 id="多维数组转化的json前端渲染"><a href="#多维数组转化的json前端渲染" class="headerlink" title="多维数组转化的json前端渲染"></a>多维数组转化的json前端渲染</h3><p>结构不固定,获取对应的json，ts实现</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">formatJsonData &#x3D; (obj: any, name: string, moduleName?: string, getModuleName?: string): any[] &#x3D;&gt; &#123;</span><br><span class="line">  const arr: any[] &#x3D; []</span><br><span class="line">    if (Object.keys(obj)) &#123;</span><br><span class="line">      let keys &#x3D; Object.keys(obj);</span><br><span class="line">      let i &#x3D; 0;</span><br><span class="line">      return keys.map((items) &#x3D;&gt; &#123;</span><br><span class="line">        i++;</span><br><span class="line">        if (obj[items] instanceof Object) &#123;</span><br><span class="line">          let itemRes &#x3D; items;</span><br><span class="line">          if (obj[items][&#39;type&#39;]) &#123;</span><br><span class="line">            itemRes &#x3D; obj[items][&#39;type&#39;];</span><br><span class="line">          &#125;</span><br><span class="line">          const names &#x3D; name + &#39;&#x3D;&#39; + itemRes</span><br><span class="line">          return this.formatJsonData(obj[items], names, moduleName);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          const resItems &#x3D; name + &#39;&#x3D;&#39; + items;</span><br><span class="line">          this.routesValue.set(resItems, obj[items])</span><br><span class="line">          if (getModuleName &amp;&amp; resItems &#x3D;&#x3D;&#x3D; getModuleName) &#123;</span><br><span class="line">            return obj[items];</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    return arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>结构不固定，根据json获取对应的值，php实现：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 将数组格式化为mongo可用的filter</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> array $arr</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> string $origin</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> array</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">formatArr2MongoFilter</span><span class="params">(array $arr, string $origin = <span class="string">'data'</span>)</span>: <span class="title">array</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (array_keys($arr)) &#123;</span><br><span class="line">            $keys = array_keys($arr);</span><br><span class="line">            <span class="keyword">foreach</span> ($keys <span class="keyword">as</span> $key) &#123;</span><br><span class="line">                <span class="keyword">if</span> (is_array($arr[$key])) &#123;</span><br><span class="line">                    $resName = $origin . <span class="string">'.'</span> . $key;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;formatArr2MongoFilter($arr[$key], $resName);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    $resName = $origin . <span class="string">'.'</span> . $key;</span><br><span class="line">                    <span class="keyword">return</span> [<span class="string">'mongoFilter'</span> =&gt; $resName, <span class="string">'value'</span> =&gt; $arr[$key]];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><h2 id="比较两个多维数组获取差异"><a href="#比较两个多维数组获取差异" class="headerlink" title="比较两个多维数组获取差异"></a>比较两个多维数组获取差异</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 比较多维数组获取差异值</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> $array1</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> $array2</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> int</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">array_diff_assoc_recursive</span><span class="params">($array1, $array2)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">foreach</span>($array1 <span class="keyword">as</span> $key =&gt; $value)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(is_array($value))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(!<span class="keyword">isset</span>($array2[$key]))</span><br><span class="line">                &#123;</span><br><span class="line">                    $difference[$key] = $value;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">elseif</span>(!is_array($array2[$key]))</span><br><span class="line">                &#123;</span><br><span class="line">                    $difference[$key] = $value;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    $new_diff = <span class="keyword">$this</span>-&gt;array_diff_assoc_recursive($value, $array2[$key]);</span><br><span class="line">                    <span class="keyword">if</span>($new_diff != <span class="keyword">FALSE</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        $difference[$key] = $new_diff;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">elseif</span>(!<span class="keyword">isset</span>($array2[$key]) || $array2[$key] != $value)</span><br><span class="line">            &#123;</span><br><span class="line">                $difference[$key] = $value;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> !<span class="keyword">isset</span>($difference) ? <span class="number">0</span> : $difference;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot; title=&quot;使用场景&quot;&gt;&lt;/a&gt;使用场景&lt;/h2&gt;&lt;p&gt;在工作中遇到了两次需要把不确定维度的多维数组渲染出来的情况，且还需要修改值和结构，如果使用json-patch会受到限制（需
+      
+    
+    </summary>
+    
+    
+      <category term="php" scheme="http://www.hexiaojiao.top/categories/php/"/>
+    
+    
+      <category term="工作经验" scheme="http://www.hexiaojiao.top/tags/%E5%B7%A5%E4%BD%9C%E7%BB%8F%E9%AA%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux命令大全</title>
+    <link href="http://www.hexiaojiao.top/2020/02/27/linuxOpe/"/>
+    <id>http://www.hexiaojiao.top/2020/02/27/linuxOpe/</id>
+    <published>2020-02-27T10:00:00.000Z</published>
+    <updated>2020-05-13T06:27:14.964Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h2><h3 id="arch"><a href="#arch" class="headerlink" title="arch"></a>arch</h3><p><strong>描述</strong></p><p>显示机器的处理器架构<br><strong>举例</strong></p><p><img src="/images/linux/arch.png" alt="towrow"></p><h3 id="uname"><a href="#uname" class="headerlink" title="uname"></a>uname</h3><p><strong>描述</strong></p><p>显示机器的处理器架构<br><strong>参数</strong></p><p>-a或–all 　显示全部的信息。<br>-m或–machine 　显示电脑类型。<br>-n或-nodename 　显示在网络上的主机名称。<br>-r或–release 　显示操作系统的发行编号。<br>-s或–sysname 　显示操作系统名称。<br>-v 　显示操作系统的版本。<br>–help 　显示帮助。<br>–version 　显示版本信息。<br><strong>举例</strong></p><p><img src="/images/linux/uname.png" alt="towrow"></p><h3 id="dmidecode"><a href="#dmidecode" class="headerlink" title="dmidecode"></a>dmidecode</h3><p><strong>描述</strong></p><p>显示硬件信息，不常用，可忽略</p><h2 id="开关机"><a href="#开关机" class="headerlink" title="开关机"></a>开关机</h2><h3 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown"></a>shutdown</h3><p><strong>描述</strong></p><p>关机或重启<br><strong>参数</strong></p><p>-t seconds : 设定在几秒钟之后进行关机程序。<br>-k : 并不会真的关机，只是将警告讯息传送给所有使用者。<br>-r : 关机后重新开机。<br>-h : 关机后停机。<br>-n : 不采用正常程序来关机，用强迫的方式杀掉所有执行中的程序后自行关机。<br>-c : 取消目前已经进行中的关机动作。<br>-f : 关机时，不做 fcsk 动作(检查 Linux 档系统)。<br>-F : 关机时，强迫进行 fsck 动作。<br>time : 设定关机的时间。<br>message : 传送给所有使用者的警告讯息。<br><strong>举例</strong></p><pre><code>shutdown -h now //立即关机shutdown -r now //立即重启</code></pre><h3 id="reboot"><a href="#reboot" class="headerlink" title="reboot"></a>reboot</h3><p><strong>描述</strong></p><p>重启<br><strong>参数</strong></p><p>-n : 在重开机前不做将记忆体资料写回硬盘的动作<br>-w : 并不会真的重开机，只是把记录写到 /var/log/wtmp 档案里<br>-d : 不把记录写到 /var/log/wtmp 档案里（-n 这个参数包含了 -d）<br>-f : 强迫重开机，不呼叫 shutdown 这个指令<br>-i : 在重开机之前先把所有网络相关的装置先停止     </p><h3 id="logout"><a href="#logout" class="headerlink" title="logout"></a>logout</h3><p><strong>描述</strong></p><p>登出系统<br>###</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;系统信息&quot;&gt;&lt;a href=&quot;#系统信息&quot; class=&quot;headerlink&quot; title=&quot;系统信息&quot;&gt;&lt;/a&gt;系统信息&lt;/h2&gt;&lt;h3 id=&quot;arch&quot;&gt;&lt;a href=&quot;#arch&quot; class=&quot;headerlink&quot; title=&quot;arch&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://www.hexiaojiao.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+      <category term="linux" scheme="http://www.hexiaojiao.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/linux/"/>
+    
+      <category term="系统相关" scheme="http://www.hexiaojiao.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/linux/%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="学习" scheme="http://www.hexiaojiao.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux命令大全</title>
+    <link href="http://www.hexiaojiao.top/2020/02/27/linuxUse/"/>
+    <id>http://www.hexiaojiao.top/2020/02/27/linuxUse/</id>
+    <published>2020-02-27T10:00:00.000Z</published>
+    <updated>2020-05-13T06:27:14.983Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><p><strong>描述</strong></p><p>查看文件内容<br><strong>参数</strong></p><p>-n 或 –number 由 1 开始对所有输出的行数编号<br>-b 或 –number-nonblank 和 -n 相似，只不过对于空白行不编号<br>-s 或 –squeeze-blank 当遇到有连续两行以上的空白行，就代换为一行的空白行<br>-v 或 –show-nonprinting<br><strong>举例</strong><br>1 从键盘创建一个文件：<br><img src="/images/linux/cat1.png" alt="towrow"><br>2 将几个文件合并成一个文件：<br><img src="/images/linux/cat2.png" alt="towrow"></p><h3 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h3><p><strong>描述</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;文件操作&quot;&gt;&lt;a href=&quot;#文件操作&quot; class=&quot;headerlink&quot; title=&quot;文件操作&quot;&gt;&lt;/a&gt;文件操作&lt;/h2&gt;&lt;h3 id=&quot;cat&quot;&gt;&lt;a href=&quot;#cat&quot; class=&quot;headerlink&quot; title=&quot;cat&quot;&gt;&lt;/a&gt;ca
+      
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://www.hexiaojiao.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+      <category term="linux" scheme="http://www.hexiaojiao.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/linux/"/>
+    
+      <category term="文件相关" scheme="http://www.hexiaojiao.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/linux/%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="学习" scheme="http://www.hexiaojiao.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算相关</title>
+    <link href="http://www.hexiaojiao.top/2020/02/25/codeCollect/"/>
+    <id>http://www.hexiaojiao.top/2020/02/25/codeCollect/</id>
+    <published>2020-02-25T12:10:10.000Z</published>
+    <updated>2020-04-16T06:34:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="1-计算矩形是否相交"><a href="#1-计算矩形是否相交" class="headerlink" title="1 计算矩形是否相交"></a>1 计算矩形是否相交</h4><p><strong>描述</strong><br>给定两个矩形的左上角起始点坐标和矩形的宽，高，计算这两个矩形是否相交<br><strong>分析</strong><br> 1 矩形1左上角坐标p1,右下角坐标p2,矩形2左上角坐标p3,右下角坐标p4<br> 2 M点坐标为P1与P3点在X方向较大值与Y方向较大值的交点<br> 3 N点坐标为P2与P4点在X方向较小值与Y方向较小值的交点<br> 4 如果M点的X坐标和Y坐标值均比N点相应的X坐标和Y坐标值小，亦即M和N可以分别构成一个矩形的左上角点和右上角点，则两矩形相交；其余情况则不相交<br> <strong>代码</strong><br> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkRectInterSect</span><span class="params">($rect1, $rect2)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $x1 = $rect1[<span class="string">'x'</span>];   $w1 = $rect1[<span class="string">'w'</span>];</span><br><span class="line">        $y1 = $rect1[<span class="string">'y'</span>];   $h1 = $rect1[<span class="string">'h'</span>];</span><br><span class="line">        $x2 = $rect2[<span class="string">'x'</span>];   $w2 = $rect2[<span class="string">'w'</span>];</span><br><span class="line">        $y2 = $rect2[<span class="string">'y'</span>];   $h2 = $rect2[<span class="string">'h'</span>];</span><br><span class="line">        $p1 = [$x1, $y1];</span><br><span class="line">        $p2 = [$x1 + $w1, $y1 + $h1];</span><br><span class="line">        $p3 = [$x2, $y2];</span><br><span class="line">        $p4 = [$x2 + $w2, $y2 + $h2];</span><br><span class="line"></span><br><span class="line">        $M = [max($p1[<span class="number">0</span>], $p3[<span class="number">0</span>]), max($p1[<span class="number">1</span>], $p1[<span class="number">1</span>])];</span><br><span class="line">        $N = [min($p2[<span class="number">0</span>], $p4[<span class="number">0</span>]), min($p2[<span class="number">1</span>], $p4[<span class="number">1</span>])];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ($M[<span class="number">0</span>] &lt; $N[<span class="number">0</span>] &amp;&amp; $M[<span class="number">1</span>] &lt; $N[<span class="number">1</span>]) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p><h4 id="2-json转csv"><a href="#2-json转csv" class="headerlink" title="2 json转csv"></a>2 json转csv</h4><p><strong>描述</strong><br>需要将数据库数据导出为csv文件<br><strong>代码</strong></p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getCsvData</span><span class="params">(int $limit = <span class="number">1000</span>, int $skip = <span class="number">0</span>, string $ageId = <span class="string">''</span>)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $data = <span class="keyword">$this</span>-&gt;dao-&gt;conn-&gt;query([<span class="string">'faceItems'</span> =&gt; [<span class="string">'$in'</span> =&gt; [$ageId]], <span class="string">'status'</span> =&gt; <span class="number">2</span>, <span class="string">'apiCheckPass'</span> =&gt; <span class="keyword">true</span>],</span><br><span class="line">            <span class="keyword">null</span>, [<span class="string">'limit'</span> =&gt; $limit, <span class="string">'skip'</span> =&gt; $skip]);</span><br><span class="line">        <span class="keyword">foreach</span> ($data <span class="keyword">as</span> $v) &#123;</span><br><span class="line">            <span class="keyword">foreach</span> ($v <span class="keyword">as</span> $key =&gt; $values) &#123;</span><br><span class="line">                <span class="keyword">if</span> (is_array($values)) &#123;</span><br><span class="line">                    $v[$key] = implode(<span class="string">'|'</span>, $values);</span><br><span class="line">                &#125;</span><br><span class="line">                (string)$v[$key];</span><br><span class="line">            &#125;</span><br><span class="line">            $exportData = implode(<span class="string">','</span>, $v);</span><br><span class="line">            $exportData = $exportData . <span class="string">"\r\n"</span>;</span><br><span class="line">            $myfile = fopen(<span class="string">"data.csv"</span>, <span class="string">"a"</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">"Unable to open file!"</span>);</span><br><span class="line">            <span class="keyword">$this</span>-&gt;writeToCsvFile($data, $myfile, $exportData);</span><br><span class="line">            fclose($myfile);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">writeToCsvFile</span><span class="params">(array $data, $myfile, $exportData)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"><span class="comment">//        $txt = \GuzzleHttp\json_encode($data);</span></span><br><span class="line">        fwrite($myfile, $exportData);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;1-计算矩形是否相交&quot;&gt;&lt;a href=&quot;#1-计算矩形是否相交&quot; class=&quot;headerlink&quot; title=&quot;1 计算矩形是否相交&quot;&gt;&lt;/a&gt;1 计算矩形是否相交&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;描述&lt;/strong&gt;&lt;br&gt;给定两个矩形的左上角起始点坐标
+      
+    
+    </summary>
+    
+    
+      <category term="有用代码段收集" scheme="http://www.hexiaojiao.top/categories/%E6%9C%89%E7%94%A8%E4%BB%A3%E7%A0%81%E6%AE%B5%E6%94%B6%E9%9B%86/"/>
+    
+    
+      <category term="学习" scheme="http://www.hexiaojiao.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>运行相关</title>
+    <link href="http://www.hexiaojiao.top/2020/02/25/codeCollect2/"/>
+    <id>http://www.hexiaojiao.top/2020/02/25/codeCollect2/</id>
+    <published>2020-02-25T12:10:10.000Z</published>
+    <updated>2020-04-16T06:34:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="1-下载数据"><a href="#1-下载数据" class="headerlink" title="1 下载数据"></a>1 下载数据</h4><p><strong>描述</strong><br>根据链接下载文件<br><strong>代码</strong></p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">downloadOldFile</span><span class="params">($url,$rename,$ext)</span></span>&#123;</span><br><span class="line">    $file_path = <span class="string">'public/images/age_60-120/'</span>;</span><br><span class="line">    $ch = curl_init($url);</span><br><span class="line">    curl_setopt($ch, CURLOPT_HEADER, <span class="number">0</span>);</span><br><span class="line">    curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</span><br><span class="line">    curl_setopt($ch, CURLOPT_BINARYTRANSFER, <span class="number">1</span>);</span><br><span class="line">    $rawdata=curl_exec ($ch);</span><br><span class="line">    curl_close ($ch);</span><br><span class="line">    <span class="comment">// 使用中文文件名需要转码</span></span><br><span class="line">    $fp = fopen($file_path. $rename .<span class="string">"."</span>.$ext,<span class="string">'w'</span>);</span><br><span class="line">    fwrite($fp, $rawdata);</span><br><span class="line">    fclose($fp);</span><br><span class="line">    <span class="comment">// 返回路径</span></span><br><span class="line">    <span class="keyword">return</span> $_SERVER[<span class="string">'DOCUMENT_ROOT'</span>].$file_path.$rename.<span class="string">"."</span>.$ext;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><h4 id="2-按步骤执行方法"><a href="#2-按步骤执行方法" class="headerlink" title="2 按步骤执行方法"></a>2 按步骤执行方法</h4><p><strong>描述</strong><br>经常有需求：分页执行脚本，例如前1000条执行完后继续分页，此时就需要自动跳页执行<br><strong>代码</strong></p><p>```php<br>&lt;?php<br>    /**<br>     * @param mixed …$args<br>     * @return bool<br>     * @throws Exception<br>     */<br>    private function stepRun(…$args)<br>    {<br>        $count = $args[0];<br>        $method = $args[1];<br>        $step = array_key_exists(2, $args) ? $args[2] : 10;<br>        $limit = array_key_exists(3, $args) ? $args[3] : 10;<br>        $param = array_key_exists(4, $args) ? $args[4] : ‘’;<br>        $stepCount = ceil($count / $step);<br>        for ($nowStep = 0; $nowStep &lt; $stepCount; $nowStep ++) {<br>            $this-&gt;$method($limit, $nowStep * $step, $param);<br>            sleep(1);<br>        }<br>        sleep(1);<br>        return true;<br>    }<br>    // 调用<br>    //     $this-&gt;stepRun($exportCount, ‘loopChildData’, 1000, $ageId);</p><pre><code>// 执行方法/**    function loopChildData(int $limit = 1000, int $skip = 0, string $ageId = &apos;&apos;)    {        $data = $this-&gt;dao-&gt;conn-&gt;query([&apos;faceItems&apos; =&gt; [&apos;$in&apos; =&gt; [$ageId]], &apos;status&apos; =&gt; 2, &apos;apiCheckPass&apos; =&gt; true],            null, [&apos;limit&apos; =&gt; $limit, &apos;skip&apos; =&gt; $skip]);        foreach ($data as $v) {            $this-&gt;downloadChildFile(Url::createPrivateUrl($v[&apos;url&apos;]), $v[&apos;_id&apos;], &apos;jpg&apos;);        }    }**/</code></pre><p>?&gt;<br>``</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;1-下载数据&quot;&gt;&lt;a href=&quot;#1-下载数据&quot; class=&quot;headerlink&quot; title=&quot;1 下载数据&quot;&gt;&lt;/a&gt;1 下载数据&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;描述&lt;/strong&gt;&lt;br&gt;根据链接下载文件&lt;br&gt;&lt;strong&gt;代码&lt;/strong&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="有用代码段收集" scheme="http://www.hexiaojiao.top/categories/%E6%9C%89%E7%94%A8%E4%BB%A3%E7%A0%81%E6%AE%B5%E6%94%B6%E9%9B%86/"/>
+    
+    
+      <category term="学习" scheme="http://www.hexiaojiao.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>有用的代码段-ts篇</title>
+    <link href="http://www.hexiaojiao.top/2020/01/16/usefulCode2/"/>
+    <id>http://www.hexiaojiao.top/2020/01/16/usefulCode2/</id>
+    <published>2020-01-16T11:34:10.000Z</published>
+    <updated>2020-04-16T06:34:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="查询数组中值相等的"><a href="#查询数组中值相等的" class="headerlink" title="查询数组中值相等的"></a>查询数组中值相等的</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">modules.modules.find(<span class="function"><span class="params">item</span> =&gt;</span> item.route === route).chinese</span><br></pre></td></tr></table></figure><h1 id="ref调用子组件"><a href="#ref调用子组件" class="headerlink" title="ref调用子组件"></a>ref调用子组件</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;FacePointsMarkTool ref=&#123;<span class="function"><span class="params">com</span> =&gt;</span> <span class="keyword">this</span>.com = com&#125; customRightRender=&#123;<span class="keyword">this</span>.customRightRender&#125; hideSaved=&#123;<span class="keyword">this</span>.handleHideSaved&#125; dataSource=&#123;dataSource&#125; loadMore=&#123;<span class="keyword">this</span>.getFaceData&#125; isShowFacePlus saveFaceData=&#123;<span class="keyword">this</span>.saveFaceData&#125;&gt;&lt;<span class="regexp">/FacePointsMarkTool&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;查询数组中值相等的&quot;&gt;&lt;a href=&quot;#查询数组中值相等的&quot; class=&quot;headerlink&quot; title=&quot;查询数组中值相等的&quot;&gt;&lt;/a&gt;查询数组中值相等的&lt;/h1&gt;&lt;figure class=&quot;highlight typescript&quot;&gt;&lt;table&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="工作经验" scheme="http://www.hexiaojiao.top/categories/%E5%B7%A5%E4%BD%9C%E7%BB%8F%E9%AA%8C/"/>
+    
+    
+      <category term="tips" scheme="http://www.hexiaojiao.top/tags/tips/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>有用的代码段-php篇</title>
+    <link href="http://www.hexiaojiao.top/2020/01/16/usefulCode1/"/>
+    <id>http://www.hexiaojiao.top/2020/01/16/usefulCode1/</id>
+    <published>2020-01-16T04:34:10.000Z</published>
+    <updated>2020-04-21T06:11:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="分步骤执行"><a href="#分步骤执行" class="headerlink" title="分步骤执行"></a>分步骤执行</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> mixed ...$args</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> bool</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">stepRun</span><span class="params">(...$args)</span>: <span class="title">bool</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $count = $args[<span class="number">0</span>];</span><br><span class="line">    $method = $args[<span class="number">1</span>];</span><br><span class="line">    $step = array_key_exists(<span class="number">2</span>, $args) ? $args[<span class="number">2</span>] : <span class="number">10</span>;</span><br><span class="line">    $limit = array_key_exists(<span class="number">3</span>, $args) ? $args[<span class="number">3</span>] : <span class="number">10</span>;</span><br><span class="line">    $param = array_key_exists(<span class="number">4</span>, $args) ? $args[<span class="number">4</span>] : <span class="string">''</span>;</span><br><span class="line">    $stepCount = ceil($count / $step);</span><br><span class="line">    <span class="keyword">for</span> ($nowStep = <span class="number">0</span>; $nowStep &lt; $stepCount; $nowStep ++) &#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;$method($limit, $nowStep * $step, $param);</span><br><span class="line">        sleep(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    sleep(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">$this</span>-&gt;stepRun($groupChangeCount, <span class="string">'loopGetData'</span>, <span class="number">30</span>, <span class="number">30</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>可运用于需要遍历数据库数据，对数据执行操作的功能上。</p><h1 id="mongodb查询"><a href="#mongodb查询" class="headerlink" title="mongodb查询"></a>mongodb查询</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/** 宜宾爱你宝贝</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> bool|int</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> \yii\base\InvalidConfigException</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">checkAssign</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $query = [</span><br><span class="line">        <span class="string">'$or'</span> =&gt; [</span><br><span class="line">            [<span class="string">'isMarked'</span> =&gt; <span class="keyword">false</span>],</span><br><span class="line">            [<span class="string">'isMarked'</span> =&gt; [<span class="string">'$exists'</span> =&gt; <span class="keyword">false</span>]]</span><br><span class="line">        ],</span><br><span class="line">        <span class="string">'faceChecked'</span> =&gt; <span class="keyword">true</span>,</span><br><span class="line">        <span class="string">'assignAuthor'</span> =&gt; BackendCookieHelper::getName()];</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;dao-&gt;conn-&gt;count($query) &gt;= <span class="number">20</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">unset</span>($query[<span class="string">'assignAuthor'</span>]);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;assignToPerson($query);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;分步骤执行&quot;&gt;&lt;a href=&quot;#分步骤执行&quot; class=&quot;headerlink&quot; title=&quot;分步骤执行&quot;&gt;&lt;/a&gt;分步骤执行&lt;/h1&gt;&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="工作经验" scheme="http://www.hexiaojiao.top/categories/%E5%B7%A5%E4%BD%9C%E7%BB%8F%E9%AA%8C/"/>
+    
+    
+      <category term="tips" scheme="http://www.hexiaojiao.top/tags/tips/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>测试</title>
+    <link href="http://www.hexiaojiao.top/2019/12/10/unitTest/"/>
+    <id>http://www.hexiaojiao.top/2019/12/10/unitTest/</id>
+    <published>2019-12-10T04:34:10.000Z</published>
+    <updated>2020-04-16T06:34:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h1><h1 id="mock"><a href="#mock" class="headerlink" title="mock"></a>mock</h1><h1 id="接口测试"><a href="#接口测试" class="headerlink" title="接口测试"></a>接口测试</h1><h1 id="stub"><a href="#stub" class="headerlink" title="stub"></a>stub</h1><h1 id="mock-1"><a href="#mock-1" class="headerlink" title="mock"></a>mock</h1><h1 id="fakeserver"><a href="#fakeserver" class="headerlink" title="fakeserver"></a>fakeserver</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;单元测试&quot;&gt;&lt;a href=&quot;#单元测试&quot; class=&quot;headerlink&quot; title=&quot;单元测试&quot;&gt;&lt;/a&gt;单元测试&lt;/h1&gt;&lt;h1 id=&quot;mock&quot;&gt;&lt;a href=&quot;#mock&quot; class=&quot;headerlink&quot; title=&quot;mock&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+    
+      <category term="学习" scheme="http://www.hexiaojiao.top/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="测试" scheme="http://www.hexiaojiao.top/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用go编写webassembly</title>
+    <link href="http://www.hexiaojiao.top/2019/12/10/webassembly_go_1/"/>
+    <id>http://www.hexiaojiao.top/2019/12/10/webassembly_go_1/</id>
+    <published>2019-12-10T04:34:10.000Z</published>
+    <updated>2020-04-16T06:34:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="使用go编写webassembly并在浏览器执行"><a href="#使用go编写webassembly并在浏览器执行" class="headerlink" title="使用go编写webassembly并在浏览器执行"></a>使用go编写webassembly并在浏览器执行</h1><h1 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h1><p><a href="https://www.cnblogs.com/baizx/p/9602581.html" target="_blank" rel="noopener">用go写WebAssembly入门</a></p><h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><p><a href="https://www.runoob.com/go/go-environment.html" target="_blank" rel="noopener">go</a></p><h2 id="编写测试文件hello-go"><a href="#编写测试文件hello-go" class="headerlink" title="编写测试文件hello.go"></a>编写测试文件hello.go</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">        fmt.Println(&quot;Hello World!&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="生成wasm文件"><a href="#生成wasm文件" class="headerlink" title="生成wasm文件"></a>生成wasm文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在windows下需要先设置环境变量：&#96;&#96;&#96; $env:GOARCH&#x3D;&quot;wasm&quot;;$env:GOOS&#x3D;&quot;js&quot;;</span><br></pre></td></tr></table></figure><h2 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp $(go env GOROOT)&#x2F;misc&#x2F;wasm&#x2F;wasm_exec.&#123;html,js&#125; .</span><br></pre></td></tr></table></figure><h2 id="添加一个测试http服务器"><a href="#添加一个测试http服务器" class="headerlink" title="添加一个测试http服务器"></a>添加一个测试http服务器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;http.go</span><br><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">    &quot;flag&quot;</span><br><span class="line">    &quot;log&quot;</span><br><span class="line">    &quot;net&#x2F;http&quot;</span><br><span class="line">    &quot;strings&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">var (</span><br><span class="line">    listen &#x3D; flag.String(&quot;listen&quot;, &quot;:8080&quot;, &quot;listen address&quot;)</span><br><span class="line">    dir    &#x3D; flag.String(&quot;dir&quot;, &quot;.&quot;, &quot;directory to serve&quot;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">    flag.Parse()</span><br><span class="line">    log.Printf(&quot;listening on %q...&quot;, *listen)</span><br><span class="line">    log.Fatal(http.ListenAndServe(*listen, http.HandlerFunc(func(resp http.ResponseWriter, req *http.Request) &#123;</span><br><span class="line">        if strings.HasSuffix(req.URL.Path, &quot;.wasm&quot;) &#123;</span><br><span class="line">            resp.Header().Set(&quot;content-type&quot;, &quot;application&#x2F;wasm&quot;)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        http.FileServer(http.Dir(*dir)).ServeHTTP(resp, req)</span><br><span class="line">    &#125;)))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h2><p>go run http.go</p><h2 id="查看效果"><a href="#查看效果" class="headerlink" title="查看效果"></a>查看效果</h2><p>浏览器打开<a href="http://localhost:8080/wasm_exec.html，点击run，控制台可以看到效果" target="_blank" rel="noopener">http://localhost:8080/wasm_exec.html，点击run，控制台可以看到效果</a></p><h2 id="node执行"><a href="#node执行" class="headerlink" title="node执行"></a>node执行</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node wasm_exec.js test.wasm</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;使用go编写webassembly并在浏览器执行&quot;&gt;&lt;a href=&quot;#使用go编写webassembly并在浏览器执行&quot; class=&quot;headerlink&quot; title=&quot;使用go编写webassembly并在浏览器执行&quot;&gt;&lt;/a&gt;使用go编写webassem
+      
+    
+    </summary>
+    
+    
+      <category term="学习" scheme="http://www.hexiaojiao.top/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="go" scheme="http://www.hexiaojiao.top/tags/go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>单例模式</title>
+    <link href="http://www.hexiaojiao.top/2019/10/29/design_singleton/"/>
+    <id>http://www.hexiaojiao.top/2019/10/29/design_singleton/</id>
+    <published>2019-10-29T09:40:10.000Z</published>
+    <updated>2020-04-16T06:34:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h1><h2 id="情景介绍"><a href="#情景介绍" class="headerlink" title="情景介绍"></a>情景介绍</h2><p>一个类只需要被实例化一次，但是不应该由调用方来判断是否被实例化过</p><h2 id="基础介绍"><a href="#基础介绍" class="headerlink" title="基础介绍"></a>基础介绍</h2><p>所有类都有构造方法，不编码则系统默认生成空的构造方法，若有显示定义的构造方法，默认的构造方法就会失效。<br>类把构造方法设置为私有，使所有的方法都不能直接实例化这个类。然后类内部写一个公共方法来判断这个类是否被实例化过，调用方无需判断</p><h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p>单例模式：保证一个类仅有一个实例，并提供一个访问它的全局访问点。<br>通常可以让一个全局变量使得一个对象被访问，但它不能防止实例化多个对象。一个最好的办法就是，让类自身负责保存它的唯一实例，这个类可以保证没有其他实例可以被创建，并且它可以提供一个访问该实例的方法。    </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;概念介绍&quot;&gt;&lt;a href=&quot;#概念介绍&quot; class=&quot;headerlink&quot; title=&quot;概念介绍&quot;&gt;&lt;/a&gt;概念介绍&lt;/h1&gt;&lt;h2 id=&quot;情景介绍&quot;&gt;&lt;a href=&quot;#情景介绍&quot; class=&quot;headerlink&quot; title=&quot;情景介绍&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://www.hexiaojiao.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="学习" scheme="http://www.hexiaojiao.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>react学习-Props,state和组件树</title>
+    <link href="http://www.hexiaojiao.top/2019/10/22/react_06/"/>
+    <id>http://www.hexiaojiao.top/2019/10/22/react_06/</id>
+    <published>2019-10-22T10:37:10.000Z</published>
+    <updated>2020-04-16T06:34:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="react学习手册"><a href="#react学习手册" class="headerlink" title="react学习手册"></a>react学习手册</h1><h2 id="属性验证"><a href="#属性验证" class="headerlink" title="属性验证"></a>属性验证</h2><p>javascript是弱类型语言，可更改变量的类型，难以查找类型错误。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;react学习手册&quot;&gt;&lt;a href=&quot;#react学习手册&quot; class=&quot;headerlink&quot; title=&quot;react学习手册&quot;&gt;&lt;/a&gt;react学习手册&lt;/h1&gt;&lt;h2 id=&quot;属性验证&quot;&gt;&lt;a href=&quot;#属性验证&quot; class=&quot;headerli
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://www.hexiaojiao.top/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="react" scheme="http://www.hexiaojiao.top/categories/%E5%89%8D%E7%AB%AF/react/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>react学习-基础</title>
+    <link href="http://www.hexiaojiao.top/2019/10/22/react_base/"/>
+    <id>http://www.hexiaojiao.top/2019/10/22/react_base/</id>
+    <published>2019-10-22T10:37:10.000Z</published>
+    <updated>2020-04-16T06:34:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="相关概念介绍"><a href="#相关概念介绍" class="headerlink" title="相关概念介绍"></a>相关概念介绍</h1><h2 id="react"><a href="#react" class="headerlink" title="react"></a>react</h2><h2 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h2><h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><h2 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h2><h2 id="react-route"><a href="#react-route" class="headerlink" title="react-route"></a>react-route</h2><h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;相关概念介绍&quot;&gt;&lt;a href=&quot;#相关概念介绍&quot; class=&quot;headerlink&quot; title=&quot;相关概念介绍&quot;&gt;&lt;/a&gt;相关概念介绍&lt;/h1&gt;&lt;h2 id=&quot;react&quot;&gt;&lt;a href=&quot;#react&quot; class=&quot;headerlink&quot; title=
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://www.hexiaojiao.top/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="react" scheme="http://www.hexiaojiao.top/categories/%E5%89%8D%E7%AB%AF/react/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>mongodb学习记录</title>
+    <link href="http://www.hexiaojiao.top/2019/10/20/mongoComplex/"/>
+    <id>http://www.hexiaojiao.top/2019/10/20/mongoComplex/</id>
+    <published>2019-10-20T10:27:44.000Z</published>
+    <updated>2020-05-13T06:20:32.804Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="http://www.mongoing.com/docs/reference/operator/aggregation/interface.html" target="_blank" rel="noopener">http://www.mongoing.com/docs/reference/operator/aggregation/interface.html</a><br><a href="https://www.cnblogs.com/zhoujie/p/mongo1.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhoujie/p/mongo1.html</a><br><a href="https://www.docs4dev.com/docs/zh/mongodb/v3.6/reference/tutorial-text-search-in-aggregation.html" target="_blank" rel="noopener">https://www.docs4dev.com/docs/zh/mongodb/v3.6/reference/tutorial-text-search-in-aggregation.html</a></p><h1 id="mongodb精准匹配"><a href="#mongodb精准匹配" class="headerlink" title="mongodb精准匹配"></a>mongodb精准匹配</h1><p>假设有需求如下：数据为多层级的数组，需要精准匹配到某一个层级，并进行更新或新增等操作，如何实现？    </p><h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><p>当Mongodb版本大于3.6.1，实现将会非常简单，因为mongodb3.6.1以上可以直接通过语句来实现精准匹配。<br>但由于实际场景中版本不支持，当匹配超过一级则会报错：Too many positional (i.e. ‘$’) elements found in path ‘files.$.testConstruct.params.list.$.testRange’<br>当版本大于3.6.1，举例：    </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.test_db.update(</span><br><span class="line">    &#123;&#39;_id&#39;: &#123;$in: [&#39;1242rererwwr&#39;]&#125;, &#39;files.name&#39;: &#39;test1.json&#39;, &#39;files.testConstruct.params.list.type&#39;: &#39;NewData&#39;&#125;,</span><br><span class="line">    &#123;$set: &#123;&#39;files.$.structuredContent.params.list.$.testRange&#39;: &#123;&#39;enable&#39;: false, &#39;min&#39;: 14, &#39;max&#39;: 90&#125;&#125;, $currentDate: &#123; updatedDatetime: true &#125;&#125;, &#123; multi: true &#125;)</span><br></pre></td></tr></table></figure><p>分析：<br>设置值时，’files.$.testConstruct.params.list.$.testRange’中的第一个”$”将会匹配到name=test1.json的数组，第二个”$”将会匹配到files.structuredContent.params.list.type=NewData的数组<br>优点： 使用简单，匹配精确，无需代码判断<br>缺点： 适用版本有限制，且由于多级匹配需要更多的条件，而实际业务中不一定能取到这些条件（例如知道要更新的key为testRange但是不知道上级查询条件无法匹配到）<br>如果版本过低，可只匹配第一级，其余的通过代码匹配。<br>当版本小于3.6.1举例：</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">batchUpdateContents</span><span class="params">(string $route, array $ids, string $editor, $updateItems, bool $needPublish)</span>: <span class="title">bool</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $routes = explode(<span class="string">'-'</span>, $route);</span><br><span class="line">        array_shift($routes);</span><br><span class="line">        $routes[<span class="number">2</span>] = <span class="keyword">self</span>::TYPE_LIST[$routes[<span class="number">2</span>]];</span><br><span class="line">        $updateRoute = <span class="string">'files.$.testConstruct.'</span> . implode(<span class="string">'.'</span>, $routes);</span><br><span class="line">        $res = <span class="keyword">$this</span>-&gt;conn-&gt;update([<span class="string">'storeId'</span> =&gt; [<span class="string">'$in'</span> =&gt; $ids], <span class="string">'files.name'</span> =&gt; <span class="string">'makeup.json'</span>, <span class="string">'files.testConstruct'</span> =&gt; [<span class="string">'$ne'</span> =&gt; <span class="string">''</span>]],</span><br><span class="line">            [<span class="string">'$set'</span> =&gt; [$updateRoute =&gt; $updateItems, <span class="string">'files.$.editor'</span> =&gt; $editor, <span class="string">'files.$.lastUpdate'</span> =&gt; time()], <span class="string">'$currentDate'</span> =&gt; [ <span class="string">'updatedDatetime'</span> =&gt;  <span class="keyword">true</span> ]], <span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">if</span> ($res) &#123;</span><br><span class="line">            <span class="comment">// 一些其他操作</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><p>枚举出可能存在的下一级数组值，然后进行匹配。update()方法当参数不存在时会进行新增参数操作。    </p><h1 id="mongodb聚合"><a href="#mongodb聚合" class="headerlink" title="mongodb聚合"></a>mongodb聚合</h1><p>mongodb的聚合操作可对数据进行一系列操作并返回结果。mongodb提供三种聚合操作：<br>aggregation pipeline, map-reduce方法和分片集合</p><h2 id="aggregation-pipeline"><a href="#aggregation-pipeline" class="headerlink" title="aggregation pipeline"></a>aggregation pipeline</h2><p>管道操作，基础操作为筛选操作，其他操作：可通过特定的字段来进行分组和排序等</p><h3 id="project"><a href="#project" class="headerlink" title="$project"></a>$project</h3><p>类似于sql的select，筛选出需要查询的字段，例如：{$project: {‘name’: 1, ‘age’:1}},也可以排除字段（0）,重命名字段，派生字段<br>（1）<field>: &lt;1 or true&gt;    是否包含该字段，field:1/0，表示选择/不选择 field<br>（2）<field>:&lt;0 or false&gt;    v3.4新增功能，指定排除字段<br>（3）<field>: <expression>  添加新字段或重置现有字段的值。 在版本3.6中更改：MongoDB 3.6添加变量REMOVE。如果表达式的计算结果为$$REMOVE，则该字段将排除在输出中。<br>3.6可使用变量REMOVE来有条件地禁止一个字段：    </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">db.books.aggregate( [</span><br><span class="line">   &#123;</span><br><span class="line">      $project: &#123;</span><br><span class="line">         title: 1,</span><br><span class="line">         &quot;author.first&quot;: 1,</span><br><span class="line">         &quot;author.last&quot; : 1,</span><br><span class="line">         &quot;author.middle&quot;: &#123;</span><br><span class="line">            $cond: &#123;</span><br><span class="line">               if: &#123; $eq: [ &quot;&quot;, &quot;$author.middle&quot; ] &#125;,</span><br><span class="line">               then: &quot;$$REMOVE&quot;,</span><br><span class="line">               else: &quot;$author.middle&quot;</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">] )</span><br></pre></td></tr></table></figure><h4 id="使用-project派生举例"><a href="#使用-project派生举例" class="headerlink" title="使用$project派生举例"></a>使用$project派生举例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">db.books.aggregate(</span><br><span class="line">   [</span><br><span class="line">      &#123;</span><br><span class="line">         $project: &#123;</span><br><span class="line">            title: 1,</span><br><span class="line">            isbn: &#123;</span><br><span class="line">               prefix: &#123; $substr: [ &quot;$isbn&quot;, 0, 3 ] &#125;,</span><br><span class="line">               group: &#123; $substr: [ &quot;$isbn&quot;, 3, 2 ] &#125;,</span><br><span class="line">               publisher: &#123; $substr: [ &quot;$isbn&quot;, 5, 4 ] &#125;,</span><br><span class="line">               title: &#123; $substr: [ &quot;$isbn&quot;, 9, 3 ] &#125;,</span><br><span class="line">               checkDigit: &#123; $substr: [ &quot;$isbn&quot;, 12, 1] &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            lastName: &quot;$author.last&quot;,</span><br><span class="line">            copiesSold: &quot;$copies&quot;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure><h4 id="投影出新数组："><a href="#投影出新数组：" class="headerlink" title="投影出新数组："></a>投影出新数组：</h4><p>示例数据：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;55ad167f320c6be244eb3b95&quot;), &quot;x&quot; : 1, &quot;y&quot; : 1 &#125;</span><br></pre></td></tr></table></figure><p>操作：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection.aggregate( [ &#123; $project: &#123; myArray: [ &quot;$x&quot;, &quot;$y&quot; ] &#125; &#125; ] )</span><br></pre></td></tr></table></figure><p>返回：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;55ad167f320c6be244eb3b95&quot;), &quot;myArray&quot; : [ 1, 1 ] &#125;</span><br></pre></td></tr></table></figure><p>如果返回的数组中包含了不存在的字段，则会返回null</p><h3 id="match"><a href="#match" class="headerlink" title="$match"></a>$match</h3><p>类似于sql中的where，设置查询条件，例如：{$match: {‘name’: {‘$ne’: ‘’}}}<br>$match仅接受一个指定查询条件的文档，查询语法与读操作查询语法相同。    </p><h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>{$match: {<query>}}    </p><h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p>在实际应用中尽可能将$match放在管道的前面位置。这样有两个好处：一是可以快速将不需要的文档过滤掉，以减少管道的工作量；二是如果再投射和分组之前执行$match，查询可以使用索引。    </p><h4 id="限制条件"><a href="#限制条件" class="headerlink" title="限制条件"></a>限制条件</h4><p>（1）不能在$match查询中使用$作为聚合管道的一部分<br>（2）要在$match阶段使用$text，$match阶段必须是管道的第一阶段</p><h4 id="查询条件介绍"><a href="#查询条件介绍" class="headerlink" title="查询条件介绍"></a>查询条件介绍</h4><p>$gt:大于<br>$lt:小于<br>$gte:大于等于<br>$lte:小于等于<br>$in:类似于sql中的in<br>$nin:不在该范围内的键<br>$or:包含多个可能的条件</p><h3 id="limit"><a href="#limit" class="headerlink" title="$limit"></a>$limit</h3><p>限制传递到管道中下一阶段的文档数</p><h3 id="skip"><a href="#skip" class="headerlink" title="skip"></a>skip</h3><p>跳过指定数量的文档，并将其余文档传递到管道中的下一阶段</p><h3 id="unwind"><a href="#unwind" class="headerlink" title="$unwind"></a>$unwind</h3><p>从输入文档解构数组字段以输出每个元素的文档，即：将数组拆分成单独的文档    </p><h4 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  $unwind:</span><br><span class="line">    &#123;</span><br><span class="line">      path: &lt;field path&gt;,</span><br><span class="line">      includeArrayIndex: &lt;string&gt;,  #可选,一个新字段的名称用于存放元素的数组索引。该名称不能以$开头。</span><br><span class="line">      preserveNullAndEmptyArrays: &lt;boolean&gt; #可选，default :false，若为true,如果路径为空，缺少或为空数组，则$unwind输出文档</span><br><span class="line"></span><br><span class="line"> &#125; </span><br><span class="line">&#125;</span><br><span class="line">db.getCollection(&#39;test&#39;).aggregate(</span><br><span class="line"> [ &#123; $unwind : &quot;$sizes&quot; &#125; ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure><h3 id="group"><a href="#group" class="headerlink" title="$group"></a>$group</h3><h4 id="释义"><a href="#释义" class="headerlink" title="释义"></a>释义</h4><p>按指定的表达式对文档进行分组，并将每个不同分组的文档输出到下一个阶段。输出文档包含一个_id字段，该字段按键包含不同的组。</p><p>输出文档还可以包含计算字段，该字段保存由$group的_id字段分组的一些accumulator表达式的值。 $group不会输出具体的文档而只是统计信息。</p><h4 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h4><p>{ $group: { _id: <expression>, <field1>: { <accumulator1> : <expression1> }, … } }<br>解析：_id字段必填，可以指定为null，表示为整个输入文档计算累计值，剩余的计算字段是可选的，并使用<accumulator>运算符进行计算。</p><h4 id="accumulator操作符"><a href="#accumulator操作符" class="headerlink" title="accumulator操作符"></a>accumulator操作符</h4><table><thead><tr><th>名称</th><th>描述</th><th>类比sql</th></tr></thead><tbody><tr><td>$avg</td><td>计算均值</td><td>avg</td></tr><tr><td>$first</td><td>返回每组第一个文档，如果有排序，按照排序，如果没有按照默认的存储的顺序的第一个文档。</td><td>limit 0,1</td></tr><tr><td>$last</td><td>返回每组最后一个文档，如果有排序，按照排序，如果没有按照默认的存储的顺序的最后个文档。</td><td>-</td></tr><tr><td>$max</td><td>根据分组，获取集合中所有文档对应值得最大值。</td><td>max</td></tr><tr><td>$min</td><td>根据分组，获取集合中所有文档对应值得最小值。</td><td>min</td></tr><tr><td>$push</td><td>将指定的表达式的值添加到一个数组中。</td><td>-</td></tr><tr><td>$addToSet</td><td>将表达式的值添加到一个集合中（无重复值，无序）。</td><td>-</td></tr><tr><td>$sum</td><td>计算总和</td><td>sum</td></tr><tr><td>$stdDevPop</td><td>返回输入值的总体标准偏差（population standard deviation）</td><td>-</td></tr><tr><td>$stdDevSamp</td><td>返回输入值的样本标准偏差（the sample standard deviation）</td><td>-</td></tr></tbody></table><h4 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h4><p>（1）$group阶段的内存限制为100M，默认情况下，如果stage超过此限制，$group将产生错误，但是，要允许处理大型数据集，需要将allowDiskUse选项设置为true以启用$group操作写入临时文件<br>（2）”$addToSet”: expr如果当前数组中不包含expr，那就将它添加到数组中<br>（3）”$push”:expr，不管expr的值，都将它添加到数组中，返回包含所有值的数组。</p><h4 id="举例-1"><a href="#举例-1" class="headerlink" title="举例"></a>举例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">db.getCollection(&#39;test&#39;).aggregate([</span><br><span class="line">    &#123;</span><br><span class="line">        $group: &#123;</span><br><span class="line">            _id: &#123;month: &#123;$month: &quot;$data&quot;&#125;, day: &#123;$dayOfMonth: &quot;$date&quot;, year: &#123; $year: &quot;$date&quot;&#125;&#125;&#125;,</span><br><span class="line">            totalPrice: &#123;$sum: &#123;$multiply: [&quot;$price&quot;, &quot;$quantity&quot;]&#125;&#125;,</span><br><span class="line">            averageQuantity: &#123;$avg: &quot;$quantitu&quot;&#125;,</span><br><span class="line">            count: &#123;$sum: 1&#125;    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure><h4 id="数据转换"><a href="#数据转换" class="headerlink" title="数据转换"></a>数据转换</h4><p>（1）可以根据分组把每组转换成item数组    </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.getCollection(&#39;test&#39;).aggregate([&#123;$group: &#123;_id: &#39;$price&#39;, items: &#123;$pish: &quot;$item&quot;&#125;&#125;&#125;])</span><br></pre></td></tr></table></figure><p>返回值：    </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;[&quot;_id&quot;: 5, &quot;items&quot;: [&quot;abc&quot;, &quot;abc&quot;]]&#125;</span><br></pre></td></tr></table></figure><p>(2) 可以使用系统变量$$ROOT按item对文档进行分组，生成的文档不得超过BSON文档大小限制    </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.getCollection(&#39;test&#39;).aggregate([&#123;$group: &#123;_id: &quot;$item&quot;, books: &#123;$push: &quot;$$ROOT&quot;&#125;&#125;&#125;])</span><br></pre></td></tr></table></figure><p>返回值：    </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* 1 *&#x2F;</span><br><span class="line">&#123;</span><br><span class="line">    &quot;_id&quot; : &quot;xyz&quot;,</span><br><span class="line">    &quot;books&quot; : [ </span><br><span class="line">        &#123;</span><br><span class="line">            &quot;_id&quot; : 3,</span><br><span class="line">            &quot;item&quot; : &quot;xyz&quot;,</span><br><span class="line">            &quot;price&quot; : 5,</span><br><span class="line">            &quot;quantity&quot; : 10,</span><br><span class="line">            &quot;date&quot; : ISODate(&quot;2014-03-15T09:00:00.000Z&quot;)</span><br><span class="line">        &#125;, </span><br><span class="line">        &#123;</span><br><span class="line">            &quot;_id&quot; : 4,</span><br><span class="line">            &quot;item&quot; : &quot;xyz&quot;,</span><br><span class="line">            &quot;price&quot; : 5,</span><br><span class="line">            &quot;quantity&quot; : 20,</span><br><span class="line">            &quot;date&quot; : ISODate(&quot;2014-04-04T11:21:39.736Z&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* 2 *&#x2F;</span><br><span class="line">&#123;</span><br><span class="line">    &quot;_id&quot; : &quot;jkl&quot;,</span><br><span class="line">    &quot;books&quot; : [ </span><br><span class="line">        &#123;</span><br><span class="line">            &quot;_id&quot; : 2,</span><br><span class="line">            &quot;item&quot; : &quot;jkl&quot;,</span><br><span class="line">            &quot;price&quot; : 20,</span><br><span class="line">            &quot;quantity&quot; : 1,</span><br><span class="line">            &quot;date&quot; : ISODate(&quot;2014-03-01T09:00:00.000Z&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* 3 *&#x2F;</span><br><span class="line">&#123;</span><br><span class="line">    &quot;_id&quot; : &quot;abc&quot;,</span><br><span class="line">    &quot;books&quot; : [ </span><br><span class="line">        &#123;</span><br><span class="line">            &quot;_id&quot; : 1,</span><br><span class="line">            &quot;item&quot; : &quot;abc&quot;,</span><br><span class="line">            &quot;price&quot; : 10,</span><br><span class="line">            &quot;quantity&quot; : 2,</span><br><span class="line">            &quot;date&quot; : ISODate(&quot;2014-03-01T08:00:00.000Z&quot;)</span><br><span class="line">        &#125;, </span><br><span class="line">        &#123;</span><br><span class="line">            &quot;_id&quot; : 5,</span><br><span class="line">            &quot;item&quot; : &quot;abc&quot;,</span><br><span class="line">            &quot;price&quot; : 10,</span><br><span class="line">            &quot;quantity&quot; : 10,</span><br><span class="line">            &quot;date&quot; : ISODate(&quot;2014-04-04T21:23:13.331Z&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="count"><a href="#count" class="headerlink" title="count"></a>count</h3><p>返回包含到输出文档的计数</p><h3 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h3><p>对文档进行排序，按照排序顺序返回管道。<br>1:升序排列<br>-1:降序排列<br>{$meta：“textScore”}按照降序排列计算出的textScore元数据，表达方式唯一，尽管可以在管道中接受表达式，但{ $meta: “textScore” }表达式仅在包含具有$text查询的$match阶段的管道中有意义。<br>分析：$text文本搜索，会为包含索引字段中的搜索词的每隔文档匹配一个分数，这个分数表示文档与给定文本搜索查询的相关性<br>举例：    </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">db.users.aggregate(</span><br><span class="line">   [</span><br><span class="line">     &#123; $match: &#123; $text: &#123; $search: &quot;operating&quot; &#125; &#125; &#125;,</span><br><span class="line">     &#123; $sort: &#123; score: &#123; $meta: &quot;textScore&quot; &#125;, posts: -1 &#125; &#125;</span><br><span class="line">   ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure><h3 id="sortByCount"><a href="#sortByCount" class="headerlink" title="$sortByCount"></a>$sortByCount</h3><p>v3.4新增，根据表达式的值对传入文档分组，计算每个不同组中文档的数量，每个输出文档都包含两个字段：包含不同分组值得_id字段和包含属于该分组或类别的文档数的计数字段，文件按降序排列<br>举例：    </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.db_test.aggregate(&#123;$sortByCount: &#39;$status&#39;&#125;);</span><br></pre></td></tr></table></figure><h3 id="geoNear"><a href="#geoNear" class="headerlink" title="geoNear"></a>geoNear</h3><h3 id="lookup"><a href="#lookup" class="headerlink" title="lookup"></a>lookup</h3><p>mongodb在大部分情况下是不需要连表的，但是依然支持连表操作，即:$lookUp</p><h3 id="out"><a href="#out" class="headerlink" title="out"></a>out</h3><h3 id="indexStats"><a href="#indexStats" class="headerlink" title="indexStats"></a>indexStats</h3><h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><h2 id="mongodb正则匹配"><a href="#mongodb正则匹配" class="headerlink" title="mongodb正则匹配"></a>mongodb正则匹配</h2><h2 id="mongodb连接方式"><a href="#mongodb连接方式" class="headerlink" title="mongodb连接方式"></a>mongodb连接方式</h2><p>mongodb://[username:password@]host1[:port1][,host2[:port2],…[,hostN[:portN]]][/[database][?options]]</p><h2 id="mongodb查看版本"><a href="#mongodb查看版本" class="headerlink" title="mongodb查看版本"></a>mongodb查看版本</h2><p>mongod –version</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;参考文档&quot;&gt;&lt;a href=&quot;#参考文档&quot; class=&quot;headerlink&quot; title=&quot;参考文档&quot;&gt;&lt;/a&gt;参考文档&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://www.mongoing.com/docs/reference/operator/aggre
+      
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://www.hexiaojiao.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="mongodb" scheme="http://www.hexiaojiao.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/mongodb/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>代码整洁之道1-9章</title>
+    <link href="http://www.hexiaojiao.top/2019/10/07/cleanCode/"/>
+    <id>http://www.hexiaojiao.top/2019/10/07/cleanCode/</id>
+    <published>2019-10-07T09:40:10.000Z</published>
+    <updated>2020-04-16T06:34:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="提要"><a href="#提要" class="headerlink" title="提要"></a>提要</h2><p>要有代码：代码呈现了需求的细节，将需求明确到机器可以执行的细节程度<br>不要产生糟糕的、混乱的代码，勒布朗法则：稍后等于永不<br>制造混乱无益于赶上期限，做得快的唯一方法就是始终保持代码整洁。</p><h2 id="好代码的特点"><a href="#好代码的特点" class="headerlink" title="好代码的特点"></a>好代码的特点</h2><p>优雅、搞笑；代码逻辑直截了当，缺陷难以隐藏；<br>尽量减少依赖关系，使之便于维护；<br>根据某种分层战略完善处理错误代码，性能调至最优<br>整洁的代码力求集中，每个函数、每个类和每个模块都全神贯注于一事，完全不受四周细节的干扰和污染<br>整洁的代码可由作者之外的开发者阅读和增补，它应当有单元测试和验收测试<br>尽量使用有意义的命名，它只提供一种而非多种做一件事的途径<br>尽量少的依赖关系，明确地定义和提供清晰、尽量少的API</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>（1）能通过所有测试<br>（2）没有重复代码<br>（3）体现系统中的全部设计理念<br>（4）包含尽量少的实体，比如类、方法、函数等<br>不要重复代码，只做一件事，表达力，小规模抽象</p><h2 id="有意义的命名"><a href="#有意义的命名" class="headerlink" title="有意义的命名"></a>有意义的命名</h2><p>（1）如果名称需要注释来补充，那就不算是名副其实（之前出现过争议）<br>（2）不要使用意义含糊的废话，如果名称相同但是意义不同，那么info和data与a an the一样毫无意义，不要使用废话，varable不应出现在便能两种，table不应出现在表中<br>（3）使用读得出来的名称，方便阅读<br>（4）使用方便搜索的名称<br>（5）避免使用编码<br>（6）应当把类和函数做得足够小，消除对成员前缀的需要，读代码的人通常不会读前缀<br>（7）不要在类名中使用奇怪的命名<br>（8）不要使用双关语</p><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>（1）函数应该尽可能小，20行封顶最佳<br>（2）每个函数都一目了然，每个函数都只说一件事，每个函数都依次带到下一个函数<br>（3）函数的缩进层不应该多余一层或两层    </p><h3 id="需要遵循的原则"><a href="#需要遵循的原则" class="headerlink" title="需要遵循的原则"></a>需要遵循的原则</h3><p>（1）确保每隔switch函数都埋藏在较低的抽象层而且永远不重复<br>（2）不要向函数传入布尔值（我以前经常这么做），因为传入布尔值表示函数会有多余的操作<br>（3）使用异常代替返回错误码（错误代码能从主路径代码中分离出来得到简化）<br>（4）抽离try/catch代码块<br>（5）不要重复自己</p><h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>注释存在的时间越久，就离它所描述的代码越远，越来越变得全然错误，因为程序员不能坚持维护注释    </p><h3 id="必要的注释（好的注释）"><a href="#必要的注释（好的注释）" class="headerlink" title="必要的注释（好的注释）"></a>必要的注释（好的注释）</h3><p>（1）法律信息<br>（2）提供信息的注释<br>（3）对意图的解释<br>（4）阐释（如果参数或返回值是某个标准库的一部分或者不能修改的代码，帮助阐释其含义的代码就会有用）<br>（5）警示</p><h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;提要&quot;&gt;&lt;a href=&quot;#提要&quot; class=&quot;headerlink&quot; title=&quot;提要&quot;&gt;&lt;/a&gt;提要&lt;/h2&gt;&lt;p&gt;要有代码：代码呈现了需求的细节，将需求明确到机器可以执行的细节程度&lt;br&gt;不要产生糟糕的、混乱的代码，勒布朗法则：稍后等于永不&lt;br&gt;制造混
+      
+    
+    </summary>
+    
+    
+      <category term="代码整洁之道" scheme="http://www.hexiaojiao.top/categories/%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93/"/>
+    
+    
+      <category term="学习" scheme="http://www.hexiaojiao.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>设计模式六大原则</title>
+    <link href="http://www.hexiaojiao.top/2019/10/07/codePrinceple/"/>
+    <id>http://www.hexiaojiao.top/2019/10/07/codePrinceple/</id>
+    <published>2019-10-07T09:40:10.000Z</published>
+    <updated>2020-04-16T06:34:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>##第一：单一职责原则（SPR）<br>一个类应该有且仅有一个原因导致该类的变更，即一个类应该只负责一项职责<br>##第二：里氏替换原则（LSP）</p><p>##第三：依赖倒置原则（DIP）<br>抽象不应该依赖细节，细节应该依赖于抽象。针对接口编程，不要针对实现编程<br>##第四：接口隔离原则（ISP）<br>##第五：迪米特法则（LoD）<br>##第六：开放封闭原则<br>开放-封闭原则是说软件实体（类、模块、函数等等）应该可以扩展，但是不可以修改</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;##第一：单一职责原则（SPR）&lt;br&gt;一个类应该有且仅有一个原因导致该类的变更，即一个类应该只负责一项职责&lt;br&gt;##第二：里氏替换原则（LSP）&lt;/p&gt;
+&lt;p&gt;##第三：依赖倒置原则（DIP）&lt;br&gt;抽象不应该依赖细节，细节应该依赖于抽象。针对接口编程，不要针对实现编程
+      
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://www.hexiaojiao.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="学习" scheme="http://www.hexiaojiao.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>单例模式</title>
+    <link href="http://www.hexiaojiao.top/2019/10/06/singleMode/"/>
+    <id>http://www.hexiaojiao.top/2019/10/06/singleMode/</id>
+    <published>2019-10-06T02:40:10.000Z</published>
+    <updated>2020-04-16T06:34:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="基础介绍"><a href="#基础介绍" class="headerlink" title="基础介绍"></a>基础介绍</h1><h2 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h2><p>作为对象的创建模式，单例模式确保某一个类只有一个实例，并且对外提供这个全局实例的访问入口。它不会创建实例副本，而是会向单例类内部存储的实例返回一个引用。</p><h2 id="单例模式三要素"><a href="#单例模式三要素" class="headerlink" title="单例模式三要素"></a>单例模式三要素</h2><ol><li>需要一个保存类的唯一实例的静态成员变量。    </li><li>构造函数和克隆函数必须声明为私有的，防止外部程序创建或复制实例副本。    </li><li>必须提供一个访问这个实例的公共静态方法，从而返回唯一实例的一个引用。    </li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;基础介绍&quot;&gt;&lt;a href=&quot;#基础介绍&quot; class=&quot;headerlink&quot; title=&quot;基础介绍&quot;&gt;&lt;/a&gt;基础介绍&lt;/h1&gt;&lt;h2 id=&quot;概念介绍&quot;&gt;&lt;a href=&quot;#概念介绍&quot; class=&quot;headerlink&quot; title=&quot;概念介绍&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://www.hexiaojiao.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="学习" scheme="http://www.hexiaojiao.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>生产者消费者模式</title>
+    <link href="http://www.hexiaojiao.top/2019/10/05/producerConsumer/"/>
+    <id>http://www.hexiaojiao.top/2019/10/05/producerConsumer/</id>
+    <published>2019-10-05T09:40:10.000Z</published>
+    <updated>2020-04-16T06:34:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h1><h2 id="概念介绍"><a href="#概念介绍" class="headerlink" title="概念介绍"></a>概念介绍</h2><p>某块模块负责产生数据，这些数据由另一个模块来负责处理。产生数据的模块，就形象地称为生产者；而处理数据的模块，就称为消费者。<br>该模式还需要有一个缓冲区处于生产者和消费者之间，作为一个中介。生产者把数据放入缓冲区，而消费者从缓冲区取出数据<br>缓冲区作用</p><ol><li><p>解耦，生产者和消费者只依赖缓冲区，而不互相依赖</p></li><li><p>支持并发和异步</p></li><li><p>支持生产者和消费者忙闲不均（来不及消费缓冲区可以暂存）</p><h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>队列(类似，但并不完全相等，有的队列没有缓冲区);<br>swoole(业务逻辑(生产者)将数据单元通过swoole的send函数弄到swoole的一个缓冲区之间，通过work进程进行分发，task进程(消费者)进行消费。)</p></li></ol><h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><p>CICD创建项目流程类似于生产者消费者模式；<br>（1）用户填写表单，创建一条CICD数据，生产者向数据表添加一条状态为pending的数据，类似于向缓冲区添加数据<br>（2）定时任务读取状态为pending的数据，消费处理后修改状态</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;基础概念&quot;&gt;&lt;a href=&quot;#基础概念&quot; class=&quot;headerlink&quot; title=&quot;基础概念&quot;&gt;&lt;/a&gt;基础概念&lt;/h1&gt;&lt;h2 id=&quot;概念介绍&quot;&gt;&lt;a href=&quot;#概念介绍&quot; class=&quot;headerlink&quot; title=&quot;概念介绍&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://www.hexiaojiao.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="概念介绍" scheme="http://www.hexiaojiao.top/tags/%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D/"/>
+    
+  </entry>
+  
+</feed>
