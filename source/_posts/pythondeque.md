@@ -1,7 +1,9 @@
 ---
 title: python数据结构之双向队列
 date: 2019-03-15 09:47:00
-categories: Python
+categories: 
+- 服务端语言
+- python
 ---
 **介绍**
 两端都可以操作的序列

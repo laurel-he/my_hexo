@@ -2,6 +2,7 @@
 title: 重新实现monthly步骤
 date: 2019-03-25 09:41:10
 categories: 
+- 服务端语言
 - python
 ---
 # 1 bi新建已收、已付、应收、应付表

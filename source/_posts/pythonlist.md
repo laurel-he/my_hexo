@@ -1,7 +1,9 @@
 ---
 title: python数据结构之列表
 date: 2019-03-15 13:47:00
-categories: Python
+categories: 
+- 服务端语言
+- python
 ---
 **介绍**
 

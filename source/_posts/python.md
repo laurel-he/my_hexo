@@ -1,7 +1,9 @@
 ---
 title: python进阶
 date: 2019-03-14 10:36:10
-categories: Python
+categories: 
+- 服务端语言
+- python
 ---
 # *args和**kwargs
 ## *args

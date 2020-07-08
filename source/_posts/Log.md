@@ -2,6 +2,10 @@
 title: Laravel 日志系统
 date: 2019-04-11 15:23:44
 tags:
+categories: 
+- 服务端语言
+- php
+- laravel
 ---
 ## 1 （自己摸索版本）5.2
 #### 1 定义路径

@@ -3,6 +3,10 @@ title: fastadmin自定义角色组
 date: 2019-01-31 17:36:10
 comments: true
 tags:
+categories: 
+- 服务端语言
+- php
+- fastadmins
 ---
 之前使用fastadmin，自定义角色组，发现编辑/删除/修改等等权限可以直接权限管理中选择，然后用不同的角色登陆，会显示对应的权限按钮。此时有一个新的需求就是增加审核和批量审核，并且也增加对应的权限。
 

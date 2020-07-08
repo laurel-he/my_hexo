@@ -1,7 +1,9 @@
 ---
 title: 补充python基础知识
 date: 2019-03-14 15:26:10
-categories: Python
+categories: 
+- 服务端语言
+- python
 ---
 ##python运算符
 **幂**

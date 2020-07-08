@@ -1,7 +1,9 @@
 ---
 title: python debugger
 date: 2019-03-14 11:48:10
-categories: Python
+categories: 
+- 服务端语言
+- python
 ---
 ##准备
 **来源**

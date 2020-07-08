@@ -1,7 +1,9 @@
 ---
 title: python数据结构
 date: 2019-03-15 09:47:00
-categories: Python
+categories: 
+- 服务端语言
+- python
 ---
 # 列表(List)
 [python list](https://www.hexiaojiao.top/2019/03/15/pythonlist/ "python list")
