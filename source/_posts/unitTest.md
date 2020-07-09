@@ -1,8 +1,11 @@
 ---
 title: 测试
 date: 2019-12-10 12:34:10
-tags: 测试
-categories: 学习
+tags: 
+- 测试
+categories: 
+- 学习
+- 测试
 ---
 # 单元测试
 # mock

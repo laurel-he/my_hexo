@@ -1,7 +1,8 @@
 ---
 title: demo实例
 date: 2019-07-18 09:37:10
-tags: demo
+tags: 
+- demo
 ---
 ## js正则表达式
 ```javascript

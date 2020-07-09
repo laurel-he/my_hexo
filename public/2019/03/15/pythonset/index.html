@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.hexiaojiao.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="介绍集合是一个无序的不重复的元素序列操作创建集合：{}或set()，创建一个空集合必须用set()，{}创建空字典(set(“asdgf”)会创建[‘a’, ‘s’, ‘d’, ‘g’, ‘f’],set()创建多个元素需要两个())parame &#x3D; {value01,value02,…}或set(value)添加元素：s.add(x)s.update(x)    -&gt;  参数可以是列表，元">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python数据结构之集合">
+<meta property="og:url" content="http://www.hexiaojiao.top/2019/03/15/pythonset/index.html">
+<meta property="og:site_name" content="贺小娇的博客">
+<meta property="og:description" content="介绍集合是一个无序的不重复的元素序列操作创建集合：{}或set()，创建一个空集合必须用set()，{}创建空字典(set(“asdgf”)会创建[‘a’, ‘s’, ‘d’, ‘g’, ‘f’],set()创建多个元素需要两个())parame &#x3D; {value01,value02,…}或set(value)添加元素：s.add(x)s.update(x)    -&gt;  参数可以是列表，元">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-03-15T05:52:00.000Z">
+<meta property="article:modified_time" content="2020-07-08T12:13:01.282Z">
+<meta property="article:author" content="Laurel He">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://www.hexiaojiao.top/2019/03/15/pythonset/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>python数据结构之集合 | 贺小娇的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="贺小娇的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">贺小娇的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">43</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.hexiaojiao.top/2019/03/15/pythonset/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Laurel He">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="贺小娇的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python数据结构之集合
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-03-15 13:52:00" itemprop="dateCreated datePublished" datetime="2019-03-15T13:52:00+08:00">2019-03-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-08 20:13:01" itemprop="dateModified" datetime="2020-07-08T20:13:01+08:00">2020-07-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">服务端语言</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%AF%AD%E8%A8%80/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>介绍</strong><br>集合是一个无序的不重复的元素序列<br><strong>操作</strong><br>创建集合：<br>{}或set()，创建一个空集合必须用set()，{}创建空字典(set(“asdgf”)会创建[‘a’, ‘s’, ‘d’, ‘g’, ‘f’],set()创建多个元素需要两个())<br>parame = {value01,value02,…}或set(value)<br>添加元素：<br>s.add(x)<br>s.update(x)    -&gt;  参数可以是列表，元组，字典等，x可以有多个，用逗号分开</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">thisset &#x3D; set((&quot;Google&quot;, &quot;Runoob&quot;, &quot;Taobao&quot;))</span><br><span class="line">thisset.update(&#123;1,3&#125;)</span><br><span class="line">print(thisset)</span><br><span class="line">&#123;1, 3, &#39;Google&#39;, &#39;Taobao&#39;, &#39;Runoob&#39;&#125;</span><br><span class="line">thisset.update([1,4],[5,6])  </span><br><span class="line">print(thisset)</span><br><span class="line">&#123;1, 3, 4, 5, 6, &#39;Google&#39;, &#39;Taobao&#39;, &#39;Runoob&#39;&#125;</span><br></pre></td></tr></table></figure>
+<p>移除元素：<br>s.remove(x)   将元素x从集合x移除，如果元素不存在则会发生错误<br>s.discard(x)  将元素x从集合x移除，如果元素不存在不会发生错误<br>计算集合元素个数：<br>len(s)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">thisset &#x3D; set((&quot;Google&quot;, &quot;Runoob&quot;, &quot;Taobao&quot;))</span><br><span class="line">len(thisset)</span><br></pre></td></tr></table></figure>
+<p>返回3<br>清空集合：<br>s.clear()<br>判断元素x是否在集合s中：<br>x in s<br><strong>内置方法</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>add()</td>
+<td>为集合添加元素</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>移除集合中的所有元素</td>
+</tr>
+<tr>
+<td>copy()</td>
+<td>拷贝一个集合</td>
+</tr>
+<tr>
+<td>difference()</td>
+<td>返回多个集合的差集</td>
+</tr>
+<tr>
+<td>difference_update()</td>
+<td>移除集合中的元素，该元素在指定的集合也存在</td>
+</tr>
+<tr>
+<td>discard()</td>
+<td>删除集合中指定的元素</td>
+</tr>
+<tr>
+<td>intersection()</td>
+<td>返回集合的交集</td>
+</tr>
+<tr>
+<td>intersection_update()</td>
+<td>删除集合中的元素，该元素在指定的集合中不存在</td>
+</tr>
+<tr>
+<td>isdisjoint()</td>
+<td>判断两个集合是否包含相同的元素，如果没有返回 True，否则返回 False</td>
+</tr>
+<tr>
+<td>issubset()</td>
+<td>判断指定集合是否为该方法参数集合的子集</td>
+</tr>
+<tr>
+<td>issuperset()</td>
+<td>判断该方法的参数集合是否为指定集合的子集</td>
+</tr>
+<tr>
+<td>pop()</td>
+<td>随机移除元素</td>
+</tr>
+<tr>
+<td>remove()</td>
+<td>移除指定元素</td>
+</tr>
+<tr>
+<td>symmetric_difference()</td>
+<td>返回两个集合中不重复的元素集合</td>
+</tr>
+<tr>
+<td>symmetric_difference_update()</td>
+<td>移除当前集合中在另外一个指定集合相同的元素，并将另外一个指定集合中不同的元素插入到当前集合中</td>
+</tr>
+<tr>
+<td>union()</td>
+<td>返回两个集合的并集</td>
+</tr>
+<tr>
+<td>update()</td>
+<td>给集合添加元素</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/15/pythonlist/" rel="prev" title="python数据结构之列表">
+      <i class="fa fa-chevron-left"></i> python数据结构之列表
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/25/monthly/" rel="next" title="重新实现monthly步骤">
+      重新实现monthly步骤 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Laurel He"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Laurel He</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Laurel He</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

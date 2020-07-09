@@ -2,7 +2,8 @@
 title: 在github上使用Hexo 搭建个人博客
 date: 2019-04-01 11:03:10
 tags:
-categories: 前端
+categories:
+ - 前端
 ---
 # 安装
 **简介**

@@ -1,8 +1,10 @@
 ---
 title: 有用的代码段-php篇
 date: 2020-01-16 12:34:10
-tags: tips
-categories: 工作经验
+tags: 
+- tips
+categories: 
+- 工作经验
 ---
 # 分步骤执行
 ```php

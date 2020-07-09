@@ -1,7 +1,8 @@
 ---
 title: 减肥日记-介绍
 date: 2020-05-23 11:50:00
-tags: 减肥
+tags: 
+- 减肥
 categories: 
 - 生活
 - 减肥

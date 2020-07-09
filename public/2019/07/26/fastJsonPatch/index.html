@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.hexiaojiao.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="fast-json-patch包使用网上关于json-patch的中文介绍太少了，官方文档没有翻译版，所以写一下自己的学习文档，以下只是自己根据英文文档的理解，不保证正确。 基础操作json patch几大基础操作包括：add, replace, move, test, remove, copy applyPatch给定文档和操作，执行操作 12345678import &amp;#123;applyOp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fast-json-patch">
+<meta property="og:url" content="http://www.hexiaojiao.top/2019/07/26/fastJsonPatch/index.html">
+<meta property="og:site_name" content="贺小娇的博客">
+<meta property="og:description" content="fast-json-patch包使用网上关于json-patch的中文介绍太少了，官方文档没有翻译版，所以写一下自己的学习文档，以下只是自己根据英文文档的理解，不保证正确。 基础操作json patch几大基础操作包括：add, replace, move, test, remove, copy applyPatch给定文档和操作，执行操作 12345678import &amp;#123;applyOp">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-07-26T06:37:10.000Z">
+<meta property="article:modified_time" content="2020-07-09T03:26:36.693Z">
+<meta property="article:author" content="Laurel He">
+<meta property="article:tag" content="小工具">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://www.hexiaojiao.top/2019/07/26/fastJsonPatch/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>fast-json-patch | 贺小娇的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="贺小娇的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">贺小娇的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">43</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.hexiaojiao.top/2019/07/26/fastJsonPatch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Laurel He">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="贺小娇的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          fast-json-patch
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-07-26 14:37:10" itemprop="dateCreated datePublished" datetime="2019-07-26T14:37:10+08:00">2019-07-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-09 11:26:36" itemprop="dateModified" datetime="2020-07-09T11:26:36+08:00">2020-07-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/react/json-patch/" itemprop="url" rel="index"><span itemprop="name">json-patch</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="fast-json-patch包使用"><a href="#fast-json-patch包使用" class="headerlink" title="fast-json-patch包使用"></a>fast-json-patch包使用</h1><p>网上关于json-patch的中文介绍太少了，官方文档没有翻译版，所以写一下自己的学习文档，以下只是自己根据英文文档的理解，不保证正确。</p>
+<h2 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h2><p>json patch几大基础操作包括：add, replace, move, test, remove, copy</p>
+<h2 id="applyPatch"><a href="#applyPatch" class="headerlink" title="applyPatch"></a>applyPatch</h2><p>给定文档和操作，执行操作</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;applyOperation, applyPatch&#125; <span class="keyword">from</span> <span class="string">'fast-json-patch'</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="built_in">document</span> = <span class="built_in">document</span> = &#123; firstName: <span class="string">"Albert"</span>, contactDetails: &#123; phoneNumbers: [] &#125; &#125;;</span><br><span class="line"><span class="keyword">let</span> patch = [</span><br><span class="line">  &#123; op: <span class="string">"replace"</span>, path: <span class="string">"/firstName"</span>, value: <span class="string">"Joachim"</span> &#125;,</span><br><span class="line">  &#123; op: <span class="string">"add"</span>, path: <span class="string">"/lastName"</span>, value: <span class="string">"Wester"</span> &#125;,</span><br><span class="line">  &#123; op: <span class="string">"add"</span>, path: <span class="string">"/contactDetails/phoneNumbers/0"</span>, value: &#123; <span class="built_in">number</span>: <span class="string">"555-123"</span> &#125;  &#125;</span><br><span class="line">];</span><br><span class="line"><span class="keyword">const</span> docu = applyPatch(<span class="built_in">document</span>, patch)</span><br></pre></td></tr></table></figure>
+<h2 id="applyOperation"><a href="#applyOperation" class="headerlink" title="applyOperation"></a>applyOperation</h2><p>执行单独的操作而不是连贯操作,举例如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="built_in">document</span> = &#123; firstName: <span class="string">"Albert"</span>, contactDetails: &#123; phoneNumbers: [] &#125; &#125;;</span><br><span class="line"><span class="keyword">var</span> operation = &#123; op: <span class="string">"replace"</span>, path: <span class="string">"/firstName"</span>, value: <span class="string">"Joachim"</span> &#125;;</span><br><span class="line"><span class="built_in">document</span> = jsonpatch.applyOperation(<span class="built_in">document</span>, operation).newDocument;</span><br><span class="line"><span class="comment">// document == &#123; firstName: "Joachim", contactDetails: &#123; phoneNumbers: [] &#125;&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="applyReducer"><a href="#applyReducer" class="headerlink" title="applyReducer"></a>applyReducer</h2><p>看了英文原文文档并不很确定，只能根据自己的理解来看。<br>javascript的reduce是一个累加器，使用applyReducer作为累加操作，当定义的操作是一组数组时，使用applyReducer执行操作，示例如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="built_in">document</span> = &#123; firstName: <span class="string">"Albert"</span>, contactDetails: &#123; phoneNumbers: [ ] &#125; &#125;;</span><br><span class="line"><span class="keyword">var</span> patch = [</span><br><span class="line">  &#123; op:<span class="string">"replace"</span>, path: <span class="string">"/firstName"</span>, value: <span class="string">"Joachim"</span> &#125;,</span><br><span class="line">  &#123; op:<span class="string">"add"</span>, path: <span class="string">"/lastName"</span>, value: <span class="string">"Wester"</span> &#125;,</span><br><span class="line">  &#123; op:<span class="string">"add"</span>, path: <span class="string">"/contactDetails/phoneNumbers/0"</span>, value: &#123; <span class="built_in">number</span>: <span class="string">"555-123"</span> &#125; &#125;</span><br><span class="line">];</span><br><span class="line"><span class="keyword">var</span> updatedDocument = patch.reduce(applyReducer, <span class="built_in">document</span>);</span><br><span class="line"><span class="comment">// updatedDocument == &#123; firstName:"Joachim", lastName:"Wester", contactDetails:&#123; phoneNumbers[ &#123;number:"555-123"&#125; ] &#125; &#125;;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Generating-patches"><a href="#Generating-patches" class="headerlink" title="Generating patches"></a>Generating patches</h2><p>提供一个类似于观察者，先获取原始文档结构（observe），之后文档进行变化，最后执行操作，可以得到应有的操作流程。示例如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="built_in">document</span> = &#123; firstName: <span class="string">"Joachim"</span>, lastName: <span class="string">"Wester"</span>, contactDetails: &#123; phoneNumbers: [ &#123; <span class="built_in">number</span>:<span class="string">"555-123"</span> &#125;] &#125; &#125;;</span><br><span class="line"><span class="keyword">var</span> observer = jsonpatch.observe(<span class="built_in">document</span>);</span><br><span class="line"><span class="built_in">document</span>.firstName = <span class="string">"Albert"</span>;</span><br><span class="line"><span class="built_in">document</span>.contactDetails.phoneNumbers[<span class="number">0</span>].number = <span class="string">"123"</span>;</span><br><span class="line"><span class="built_in">document</span>.contactDetails.phoneNumbers.push(&#123; <span class="built_in">number</span>:<span class="string">"456"</span> &#125;);</span><br><span class="line"><span class="keyword">var</span> patch = jsonpatch.generate(observer);</span><br><span class="line"><span class="comment">// patch  == [</span></span><br><span class="line"><span class="comment">//   &#123; op: "replace", path: "/firstName", value: "Albert"&#125;,</span></span><br><span class="line"><span class="comment">//   &#123; op: "replace", path: "/contactDetails/phoneNumbers/0/number", value: "123" &#125;,</span></span><br><span class="line"><span class="comment">//   &#123; op: "add", path: "/contactDetails/phoneNumbers/1", value: &#123;number:"456"&#125;&#125;</span></span><br><span class="line"><span class="comment">// ];</span></span><br></pre></td></tr></table></figure>
+<h2 id="比较两个文档-compare"><a href="#比较两个文档-compare" class="headerlink" title="比较两个文档-compare"></a>比较两个文档-compare</h2><p>直接比较两个文档，得出从文档A到文档B应有哪些操作（得到操作后可以尝试用这个操作来更新B文档）</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> documentA = &#123;user: &#123;firstName: <span class="string">"Albert"</span>, lastName: <span class="string">"Einstein"</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">var</span> documentB = &#123;user: &#123;firstName: <span class="string">"Albert"</span>, lastName: <span class="string">"Collins"</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">var</span> diff = jsonpatch.compare(documentA, documentB);</span><br><span class="line"><span class="comment">//diff == [&#123;op: "replace", path: "/user/lastName", value: "Collins"&#125;]</span></span><br></pre></td></tr></table></figure>
+<h2 id="验证修补程序序列"><a href="#验证修补程序序列" class="headerlink" title="验证修补程序序列"></a>验证修补程序序列</h2><p>对patch做校验，验证这个补丁是否可以应用到指定的对象上（可能是这个意思）,如果出错可以打印出错误信息</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;user: &#123;firstName: <span class="string">"Albert"</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">var</span> patches = [&#123;op: <span class="string">"replace"</span>, path: <span class="string">"/user/firstName"</span>, value: <span class="string">"Albert"</span>&#125;, &#123;op: <span class="string">"replace"</span>, path: <span class="string">"/user/lastName"</span>, value: <span class="string">"Einstein"</span>&#125;];</span><br><span class="line"><span class="keyword">var</span> errors = jsonpatch.validate(patches, obj);</span><br><span class="line"><span class="keyword">if</span> (errors.length == <span class="number">0</span>) &#123;</span><br><span class="line"> <span class="comment">//there are no errors!</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i &lt; errors.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!errors[i]) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"Valid patch at index"</span>, i, patches[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.error(<span class="string">"Invalid patch at index"</span>, i, errors[i], patches[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Json-Patch-API"><a href="#Json-Patch-API" class="headerlink" title="Json Patch API"></a>Json Patch API</h1><p>函数原型：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">applyPatch</span>&lt;<span class="title">T</span>&gt;(<span class="params"><span class="built_in">document</span>: T, patch: Operation[], validateOperation?: <span class="built_in">boolean</span> | Validator&lt;T&gt;, mutateDocument: <span class="built_in">boolean</span> = <span class="literal">true</span>, banPrototypeModifications: <span class="built_in">boolean</span> = <span class="literal">true</span></span>): <span class="title">PatchResult</span>&lt;<span class="title">T</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>对参数的释义：    </p>
+<ul>
+<li>document：将要patch的文档；    </li>
+<li>patch：一个json-patch数组，一组可执行的操作；    </li>
+<li>validateOperation： boolean类型，是否使用默认校验器对每个操作进行校验或通过校验器回调；<br>…<br>其余部分可以自行查文档</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B0%8F%E5%B7%A5%E5%85%B7/" rel="tag"># 小工具</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/07/24/SimpleFactory/" rel="prev" title="简单工厂模式">
+      <i class="fa fa-chevron-left"></i> 简单工厂模式
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/07/26/2019-03-07/" rel="next" title="Leetcode刷题">
+      Leetcode刷题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#fast-json-patch包使用"><span class="nav-number">1.</span> <span class="nav-text">fast-json-patch包使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础操作"><span class="nav-number">1.1.</span> <span class="nav-text">基础操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#applyPatch"><span class="nav-number">1.2.</span> <span class="nav-text">applyPatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#applyOperation"><span class="nav-number">1.3.</span> <span class="nav-text">applyOperation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#applyReducer"><span class="nav-number">1.4.</span> <span class="nav-text">applyReducer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generating-patches"><span class="nav-number">1.5.</span> <span class="nav-text">Generating patches</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较两个文档-compare"><span class="nav-number">1.6.</span> <span class="nav-text">比较两个文档-compare</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证修补程序序列"><span class="nav-number">1.7.</span> <span class="nav-text">验证修补程序序列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Json-Patch-API"><span class="nav-number">2.</span> <span class="nav-text">Json Patch API</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Laurel He"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Laurel He</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Laurel He</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

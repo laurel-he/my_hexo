@@ -1,8 +1,10 @@
 ---
 title: 使用go编写webassembly
 date: 2019-12-10 12:34:10
-tags: go
-categories: 学习
+tags: 
+- go
+categories:
+ - 学习
 ---
 # 使用go编写webassembly并在浏览器执行
 # 参考博客

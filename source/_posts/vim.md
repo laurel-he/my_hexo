@@ -1,8 +1,10 @@
 ---
 title: vim学习笔记
 date: 2019-02-28 16:34:10
-tags: 文档
-categories: 快捷键
+tags: 
+- 文档
+categories: 
+- 快捷键
 ---
 ## 光标移动
 

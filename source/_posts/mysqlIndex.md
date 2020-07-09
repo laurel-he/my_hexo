@@ -1,7 +1,8 @@
 ---
 title: mysql索引优化
 date: 2019-04-02 18:27:44
-tags: 优化
+tags: 
+- 优化
 categories: 
 - 数据库
 - mysql

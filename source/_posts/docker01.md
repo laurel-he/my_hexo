@@ -1,8 +1,10 @@
 ---
 title: 《第一本docker书》学习笔记01
 date: 2020-04-21 21:03:10
-tags: 学习
-categories: docker
+tags: 
+- 学习
+categories: 
+- docker
 ---
 # Docker与配置管理
 ## docker的核心组件

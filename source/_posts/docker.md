@@ -1,8 +1,10 @@
 ---
 title: docker使用心得
 date: 2019-04-24 21:03:10
-tags: 使用心得
-categories: docker
+tags: 
+- 使用心得
+categories: 
+- docker
 ---
 ## 准备工作
 #### 1 前提条件

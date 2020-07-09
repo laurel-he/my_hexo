@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.hexiaojiao.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1 （自己摸索版本）5.21 定义路径.env配置文件添加日志路径，例如 1LOG_PATH&#x3D;&#x2F;tmp&#x2F;paytest 2 启动文件添加日志路径1234$app-&gt;configureMonologUsing(function($logger)&amp;#123;    $logger-&gt;pushHandler(new \Monolog\Handler\Rotati">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel 日志系统">
+<meta property="og:url" content="http://www.hexiaojiao.top/2019/04/11/Log/index.html">
+<meta property="og:site_name" content="贺小娇的博客">
+<meta property="og:description" content="1 （自己摸索版本）5.21 定义路径.env配置文件添加日志路径，例如 1LOG_PATH&#x3D;&#x2F;tmp&#x2F;paytest 2 启动文件添加日志路径1234$app-&gt;configureMonologUsing(function($logger)&amp;#123;    $logger-&gt;pushHandler(new \Monolog\Handler\Rotati">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-04-11T07:23:44.000Z">
+<meta property="article:modified_time" content="2020-07-08T12:12:14.354Z">
+<meta property="article:author" content="Laurel He">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://www.hexiaojiao.top/2019/04/11/Log/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Laravel 日志系统 | 贺小娇的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="贺小娇的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">贺小娇的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">43</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.hexiaojiao.top/2019/04/11/Log/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Laurel He">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="贺小娇的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Laravel 日志系统
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-04-11 15:23:44" itemprop="dateCreated datePublished" datetime="2019-04-11T15:23:44+08:00">2019-04-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-08 20:12:14" itemprop="dateModified" datetime="2020-07-08T20:12:14+08:00">2020-07-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">服务端语言</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%AF%AD%E8%A8%80/php/" itemprop="url" rel="index"><span itemprop="name">php</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%AF%AD%E8%A8%80/php/laravel/" itemprop="url" rel="index"><span itemprop="name">laravel</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="1-（自己摸索版本）5-2"><a href="#1-（自己摸索版本）5-2" class="headerlink" title="1 （自己摸索版本）5.2"></a>1 （自己摸索版本）5.2</h2><h4 id="1-定义路径"><a href="#1-定义路径" class="headerlink" title="1 定义路径"></a>1 定义路径</h4><p>.env配置文件添加日志路径，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOG_PATH&#x3D;&#x2F;tmp&#x2F;paytest</span><br></pre></td></tr></table></figure>
+<h4 id="2-启动文件添加日志路径"><a href="#2-启动文件添加日志路径" class="headerlink" title="2 启动文件添加日志路径"></a>2 启动文件添加日志路径</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$app-&gt;configureMonologUsing(<span class="function"><span class="keyword">function</span><span class="params">($logger)</span></span>&#123;</span><br><span class="line">    $logger-&gt;pushHandler(<span class="keyword">new</span> \Monolog\Handler\RotatingFileHandler(env(<span class="string">'LOG_PATH'</span>).<span class="string">'.log'</span>), <span class="number">10</span>);</span><br><span class="line">    <span class="keyword">return</span> $logger;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="2-官方文档"><a href="#2-官方文档" class="headerlink" title="2 官方文档"></a>2 官方文档</h2><h4 id="1-异常处理"><a href="#1-异常处理" class="headerlink" title="1 异常处理"></a>1 异常处理</h4><p><strong>介绍</strong><br>当您启动一个新的 Laravel 项目时，错误和异常处理就已为您配置。 应用程序触发的所有异常都被 App\Exceptions\Handler 类记录下来，然后渲染给用户。 我们将在本文档中深入介绍此类。<br><strong>配置</strong><br>（1）config/app.php 文件的 debug 选项，决定了是否向用户显示错误信息。默认情况下，此选项设置为存储在 .env 文件中的  APP_DEBUG 环境变量中。<br>（2）Laravel 支持 single 、daily 、 syslog 和 errorlog 日志模式。要配置 Laravel 使用的存储机制，应该修改 config/app.php 配置文件中的 log 选项。例如，如果您希望使用每日一个日志文件而不是单个文件，则应将 app 配置文件中的 log 值设置为 daily<br><strong>日志等级</strong><br>使用 Monolog 时，日志消息可能具有不同的日志等级。默认情况下，Laravel 将所有日志级别写入存储。但是，在生产环境中，您可能希望通过将 log_level 选项添加到 app.php 配置文件中来配置应记录的最低日志等级。</p>
+<p>一旦配置了此选项，Laravel 将记录大于或等于指定日志等级的所有级别。例如，默认将 log_level 设置为 error 那么将会记录 error , critical , alert 和 emergency 日志信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#39;log_level&#39; &#x3D;&gt; env(&#39;APP_LOG_LEVEL&#39;, &#39;error&#39;),</span><br></pre></td></tr></table></figure>
+<p><strong>注意事项</strong><br> Monolog 识别以下日志等级 - 从低到高为: debug , info , notice , warning , error , critical , alert , emergency<br><strong>Report方法</strong><br>所有异常都由 App\Exceptions\Handler 类处理。 这个类包含两个方法：report 和 render 。 我们将详细研究这些方法。 report 方法用于记录异常或将其发送到外部服务，如 Bugsnag 或 Sentry 。默认情况下，report 方法只是将异常传递给记录异常的基类。然而，你可以自由选择任何方式进行处理。<br><strong>render方法</strong><br>render 方法负责将异常转换成 HTTP 响应发送给浏览器。默认情况下，异常会传递给为您生成响应的基类。但是，您可以自由检查异常类型或返回您自己的自定义响应</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 渲染异常并添加到 HTTP 响应中。</span><br><span class="line"> *</span><br><span class="line"> * @param  \Illuminate\Http\Request  $request</span><br><span class="line"> * @param  \Exception  $exception</span><br><span class="line"> * @return \Illuminate\Http\Response</span><br><span class="line"> *&#x2F;</span><br><span class="line">public function render($request, Exception $exception)</span><br><span class="line">&#123;</span><br><span class="line">    if ($exception instanceof CustomException) &#123;</span><br><span class="line">        return response()-&gt;view(&#39;errors.custom&#39;, [], 500);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return parent::render($request, $exception);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>HTTP异常</strong><br>可直接用abort()，例如abort(404),abort(403, ‘Unauthorized action.’);<br><strong>自定义错误页面</strong><br>如果您要自定义404 HTTP状态代码的错误页面，请创建一个 resources/views/errors/404.blade.php 。此文件将会用于渲染所有404错误。此目录中的视图文件命名应与它们对应的HTTP状态代码匹配。由 abort 函数引发的 HttpException 实例将作为 $exception 变量传递给视图。</p>
+<h4 id="2-记录"><a href="#2-记录" class="headerlink" title="2 记录"></a>2 记录</h4><p><strong>介绍</strong><br>默认情况下，Laravel 日志目录为 storage/logs<br>可以传递参数，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$test &#x3D; &quot;test&quot;;</span><br><span class="line">Log::info(222222222, [&#39;te&#39; &#x3D;&gt; $test]);</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/10/crontab/" rel="prev" title="crontab基本使用">
+      <i class="fa fa-chevron-left"></i> crontab基本使用
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/24/githubGuide/" rel="next" title="gitflow command version">
+      gitflow command version <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-（自己摸索版本）5-2"><span class="nav-number">1.</span> <span class="nav-text">1 （自己摸索版本）5.2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-定义路径"><span class="nav-number">1.0.1.</span> <span class="nav-text">1 定义路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-启动文件添加日志路径"><span class="nav-number">1.0.2.</span> <span class="nav-text">2 启动文件添加日志路径</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-官方文档"><span class="nav-number">2.</span> <span class="nav-text">2 官方文档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-异常处理"><span class="nav-number">2.0.1.</span> <span class="nav-text">1 异常处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-记录"><span class="nav-number">2.0.2.</span> <span class="nav-text">2 记录</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Laurel He"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Laurel He</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Laurel He</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

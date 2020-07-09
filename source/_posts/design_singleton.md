@@ -1,8 +1,10 @@
 ---
 title: 单例模式
 date: 2019-10-29 17:40:10
-tags: 学习
-categories: 设计模式
+tags: 
+- 学习
+categories: 
+- 设计模式
 ---
 # 概念介绍
 ## 情景介绍

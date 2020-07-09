@@ -1,7 +1,8 @@
 ---
 title: linux命令大全
 date: 2020-02-27 18:00:00
-tags: 学习
+tags: 
+- 学习
 categories: 
 - 操作系统
 - linux

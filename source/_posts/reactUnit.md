@@ -1,7 +1,8 @@
 ---
 title: react单元测试
 date: 2019-07-29 10:40:10
-tags: 学习
+tags: 
+- 学习
 categories: 
 - 前端
 - react

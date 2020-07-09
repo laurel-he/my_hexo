@@ -1,10 +1,11 @@
 ---
 title: 设计模式从头学习-前言
 date: 2020-05-07 20:13:10
-tags: 学习
+tags: 
+- 学习
 categories: 
+- 学习
 - 设计模式
-- 前言
 ---
 **注意**
 本文参考了书籍《大话设计模式》和文章[从招式与内功谈起——设计模式概述](https://blog.csdn.net/lovelion/article/details/7420866)

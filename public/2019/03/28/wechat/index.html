@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.hexiaojiao.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="wxpy直接排除，只有极少数人的微信可以使用，无法用来实现机器人； 图灵机器人图灵机器人可以接入微信，也可以实现群管理，但是是通过第三方来实现的    功能 详解 是否必要    接入微信公众号 群自动回复 是   主动触发回复 主动往群里发送消息 是   定时发送 定时给群发送消息 是   ### 微群管家     图灵机器人推荐的微信个人号接入第三方插件，但只有windows版本可用，不适用于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="各方法实现微信机器人对比">
+<meta property="og:url" content="http://www.hexiaojiao.top/2019/03/28/wechat/index.html">
+<meta property="og:site_name" content="贺小娇的博客">
+<meta property="og:description" content="wxpy直接排除，只有极少数人的微信可以使用，无法用来实现机器人； 图灵机器人图灵机器人可以接入微信，也可以实现群管理，但是是通过第三方来实现的    功能 详解 是否必要    接入微信公众号 群自动回复 是   主动触发回复 主动往群里发送消息 是   定时发送 定时给群发送消息 是   ### 微群管家     图灵机器人推荐的微信个人号接入第三方插件，但只有windows版本可用，不适用于">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-03-28T06:03:27.000Z">
+<meta property="article:modified_time" content="2020-07-08T11:28:40.339Z">
+<meta property="article:author" content="Laurel He">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://www.hexiaojiao.top/2019/03/28/wechat/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>各方法实现微信机器人对比 | 贺小娇的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="贺小娇的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">贺小娇的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">技术博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">14</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">43</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://www.hexiaojiao.top/2019/03/28/wechat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Laurel He">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="贺小娇的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          各方法实现微信机器人对比
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-03-28 14:03:27" itemprop="dateCreated datePublished" datetime="2019-03-28T14:03:27+08:00">2019-03-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-07-08 19:28:40" itemprop="dateModified" datetime="2020-07-08T19:28:40+08:00">2020-07-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="wxpy"><a href="#wxpy" class="headerlink" title="wxpy"></a>wxpy</h2><p>直接排除，只有极少数人的微信可以使用，无法用来实现机器人；</p>
+<h2 id="图灵机器人"><a href="#图灵机器人" class="headerlink" title="图灵机器人"></a>图灵机器人</h2><p>图灵机器人可以接入微信，也可以实现群管理，但是是通过第三方来实现的</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>详解</th>
+<th>是否必要</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>接入微信公众号</td>
+<td>群自动回复</td>
+<td>是</td>
+</tr>
+<tr>
+<td>主动触发回复</td>
+<td>主动往群里发送消息</td>
+<td>是</td>
+</tr>
+<tr>
+<td>定时发送</td>
+<td>定时给群发送消息</td>
+<td>是</td>
+</tr>
+<tr>
+<td>### 微群管家</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>图灵机器人推荐的微信个人号接入第三方插件，但只有windows版本可用，不适用于mac版本开发，但可以实现自定义开发，文档比较全面<em>且免费</em>，可以作为备选方案</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>功能介绍：</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>详解</th>
+<th>是否必要</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>关键词自动回复</td>
+<td>群自动回复</td>
+<td>是</td>
+</tr>
+<tr>
+<td>主动触发回复</td>
+<td>主动往群里发送消息</td>
+<td>是</td>
+</tr>
+<tr>
+<td>定时发送</td>
+<td>定时给群发送消息</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>收费情况如下：</p>
+<table>
+<thead>
+<tr>
+<th>产品</th>
+<th>功能</th>
+<th>价格</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>—</td>
+<td>—</td>
+<td>免费</td>
+</tr>
+</tbody></table>
+<p>建议：建议使用微群管家，免费</p>
+<h3 id="微友助手"><a href="#微友助手" class="headerlink" title="微友助手"></a>微友助手</h3><p>也是图灵机器人推荐的个人号接入第三方插件，有后台管理。<br>功能介绍：     </p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>详解</th>
+<th>是否必要</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>机器人管理</td>
+<td>扫码登录的用户作为机器人，无需邀请新人</td>
+<td>是</td>
+</tr>
+<tr>
+<td>机器人管理</td>
+<td>群数据下载，分析群数据，没太大意义</td>
+<td>否</td>
+</tr>
+<tr>
+<td>定时群发</td>
+<td>可以直接定时群发消息，支持多个群</td>
+<td>是</td>
+</tr>
+<tr>
+<td>群分组管理</td>
+<td>可以给群做一个分组，但是仅限付费群，需要调研收费情况</td>
+<td>待定</td>
+</tr>
+<tr>
+<td>自动回复</td>
+<td>设置关键词后机器人可根据关键词自动回复</td>
+<td>是</td>
+</tr>
+<tr>
+<td>智能聊天</td>
+<td>@机器人后接入图灵机器人自动回复</td>
+<td>待定</td>
+</tr>
+<tr>
+<td>群文件管理</td>
+<td>自动保存群成员发到群内的文件，在群内@机器人，机器人将会回复群文件存放链接</td>
+<td>是</td>
+</tr>
+<tr>
+<td>成员管理</td>
+<td>管理用户，可设置群内权限，也可查看聊天记录</td>
+<td>是</td>
+</tr>
+<tr>
+<td>踢人</td>
+<td>需要机器人本身是群主才能踢人</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<p>收费情况如下：</p>
+<table>
+<thead>
+<tr>
+<th>产品</th>
+<th>功能</th>
+<th>价格</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>微友助手精简版</td>
+<td>（机器人聊天+关键词回复）或 （机器人聊天+新人入群欢迎语）或 （机器人聊天+定时发送消息）或（机器人聊天+群数据分析）四选一</td>
+<td>79/群/年</td>
+</tr>
+<tr>
+<td>微友助手高级版</td>
+<td>机器人聊天、群数据分析、新人入群欢迎语、关键词回复、定时群发</td>
+<td>99/群/年</td>
+</tr>
+<tr>
+<td>微友助手旗舰版</td>
+<td>高级版所有功能+潜水/邀请查询，管理员、关键词自动批量踢人，群签到，群精华，群文件管理，群名保护，重复群成员查询去重，发红包、链接、小程序智能提醒及更多扩展功能。</td>
+<td>129/群/年</td>
+</tr>
+<tr>
+<td>微友助手企业版</td>
+<td>包含旗舰版的所有功能，支持购买的群数范围内无限次换群。购买50个以上，问题优先处理，1对1VIP服务。</td>
+<td>需要咨询</td>
+</tr>
+</tbody></table>
+<p>建议：企业版，可以协调价格</p>
+<h3 id="chatie"><a href="#chatie" class="headerlink" title="chatie"></a>chatie</h3><p>文档地址：<a href="https://docs.chatie.io/v/zh/api" target="_blank" rel="noopener">https://docs.chatie.io/v/zh/api</a><br>微群管家也是基于web开发的，微友助手和chatie是通过ipad方式登录，还可以用<br>功能介绍：与微友助手类似    </p>
+<p>收费情况：<br>如果web版微信可用，免费，否则通过ipad登录收费    </p>
+<table>
+<thead>
+<tr>
+<th>产品</th>
+<th>功能</th>
+<th>价格</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>token</td>
+<td>提供一个类似于微信公众号token，必须自行开发</td>
+<td>1920元/年</td>
+</tr>
+<tr>
+<td>token</td>
+<td>提供一个类似于微信公众号token，可自行开发</td>
+<td>1920/年</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/03/28/Laurel/" rel="prev" title="一些php知识">
+      <i class="fa fa-chevron-left"></i> 一些php知识
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/28/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%B4%E6%8A%A4/" rel="next" title="mysql数据库维护">
+      mysql数据库维护 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#wxpy"><span class="nav-number">1.</span> <span class="nav-text">wxpy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图灵机器人"><span class="nav-number">2.</span> <span class="nav-text">图灵机器人</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#微友助手"><span class="nav-number">2.1.</span> <span class="nav-text">微友助手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chatie"><span class="nav-number">2.2.</span> <span class="nav-text">chatie</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Laurel He"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Laurel He</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Laurel He</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
