@@ -60,32 +60,6 @@
   </entry>
   
   <entry>
-    <title>操作系统（1）-基础和vim操作</title>
-    <link href="http://www.hexiaojiao.top/2021/07/20/opratingSystem_01/"/>
-    <id>http://www.hexiaojiao.top/2021/07/20/opratingSystem_01/</id>
-    <published>2021-07-20T08:34:10.000Z</published>
-    <updated>2021-07-23T02:14:39.386Z</updated>
-    
-    <content type="html"><![CDATA[<p>本系列来源于蓝桥：<a href="https://www.lanqiao.cn/courses/2610" target="_blank" rel="noopener">https://www.lanqiao.cn/courses/2610</a><br>同系列文已发布在<a href="https://blog.csdn.net/qq_28391061/article/details/118521068" target="_blank" rel="noopener">CSDN</a></p><h4 id="命令行中的shell通配符"><a href="#命令行中的shell通配符" class="headerlink" title="命令行中的shell通配符"></a>命令行中的shell通配符</h4><table><thead><tr><th>字符</th><th>含义</th></tr></thead><tbody><tr><td>*</td><td>匹配0或多个字符</td></tr><tr><td>?</td><td>匹配任意一个字符</td></tr><tr><td>[list]</td><td>匹配 list 中的任意单一字符</td></tr><tr><td>[^list]</td><td>匹配 除list 中的任意单一字符以外的字符</td></tr><tr><td>[c1-c2]</td><td>匹配 c1-c2之间的任意单一字符</td></tr><tr><td>{string1, string2…}</td><td>匹配 string1 或 string2 (或更多)其一字符串</td></tr><tr><td>{c1..c2}</td><td>匹配 c1-c2 中全部字符 如{1..10}</td></tr><tr><td>### 示例</td><td></td></tr><tr><td>#### 创建用户lilei</td><td></td></tr><tr><td>sudo adduser lilei</td><td></td></tr><tr><td>#### 将lilei加入sudo组</td><td></td></tr><tr><td>sudo usermod -G sudo lilei</td><td></td></tr><tr><td>#### 删除用户lilei</td><td></td></tr><tr><td>sudo deluser lilei –remove-home</td><td></td></tr><tr><td>### 问题</td><td></td></tr><tr><td>#### ls -l列出的每一行是什么意思？</td><td></td></tr><tr><td>例如：lrwxrwxrwx 1 root      root        14 7月   6 17:12 anaconda3 -&gt; /opt/anaconda3</td><td></td></tr><tr><td>示例</td><td>含义</td></tr><tr><td>–</td><td>–</td></tr><tr><td>lrwxrwxrwx</td><td>文件类型和权限</td></tr><tr><td>2</td><td>文件和权限</td></tr><tr><td>root</td><td>所有者</td></tr><tr><td>root</td><td>所属用户组</td></tr><tr><td>14</td><td>文件大小</td></tr><tr><td>7月   6 17:12</td><td>最后修改时间</td></tr><tr><td>anaconda3 -&gt; /opt/anaconda3</td><td>文件名</td></tr><tr><td>#### vim查漏补缺</td><td></td></tr><tr><td><strong>添加或修改</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A在行末添加文本</span><br><span class="line">a在光标之后插入文本</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>删除</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x在正常(normal)模式下可删除光标所在的一个字符</span><br><span class="line">dw可删除一个单词，从光标当前位置到下一个单词起始处,d2w删除两个</span><br><span class="line">de从光标当前位置到单词结尾，d2e删除两个</span><br><span class="line">d$从当前光标删除至行末</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>移动</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2w向前移动2个单词</span><br><span class="line">3e光标移动到第三个单词的末尾</span><br><span class="line">0移动光标到行首</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>撤销</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">U撤销对整行的修改</span><br><span class="line">CTRL+r重做，即撤销被撤销的命令</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>置入</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p将最后一次删除的内容置入光标下一行</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>替换</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">r替换掉当前光标所在字符，例如rc代表把当前光标所谓位置字符替换为c</span><br><span class="line">R连续替换多个字符</span><br><span class="line">ce改变文本直到一个单词的末尾</span><br><span class="line">c$替换当前光标到行末的内容</span><br><span class="line">s&#x2F;old&#x2F;new&#x2F;可替换当前光标所在行的第一个字符串</span><br><span class="line">s&#x2F;old&#x2F;new&#x2F;g替换光标坐在行匹配到的所有字符串</span><br><span class="line">m,ns&#x2F;old&#x2F;new&#x2F;g代表替换m到n行之间出现的每个匹配串</span><br><span class="line">%s&#x2F;old&#x2F;new&#x2F;g替换整个文件中出现的每个匹配串</span><br><span class="line">%s&#x2F;old&#x2F;new&#x2F;g找到整个文件中的每个匹配串并提示是否替换</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>定位及文件状态</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctrl+g显示当前编辑文件中当前光标所在行位置以及文件状态信息</span><br><span class="line">行号+G可以直接跳转到该行（等同于:+行号）</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>搜索类命令</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;后n查找下一个,N查找上一个</span><br><span class="line">ctrl+o回到上一次查找的位置，可以重复按</span><br><span class="line">%可以查找配对的括号:)]&#125;</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>执行外部命令</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:!+命令可以执行外部命令，例如:!ls</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>保存</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">w+文件名另存为某文件</span><br><span class="line">v motion :w filename，选择性的保存文件，按v之后高亮选择文件，按:w filename保存到文件中</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>提取和合并文件</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:r FILENAME在光标中插入FILENAME文件里的内容</span><br><span class="line">:r !ls 将ls命令的结果插入当前光标之后</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>复制粘贴</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v光标移动选择文本，y复制文本，p粘贴文本</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>设置</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:set ic, 设置查找时忽略大小写(ignore case)，取消设置set noic</span><br><span class="line">:set hls is, 匹配项高亮显示,取消设置 nohlsearch</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td>## Linux进程</td><td></td></tr><tr><td>### fork</td><td></td></tr><tr><td>fork是一个系统调用，主要作用就会为当前进程创建一个新的进程，这个新的进程就是它的子进程，这个子进程除了父进程的返回值和pid以外其他的都一模一样，如进程的执行代码段，内存信息，文件描述，寄存器状态等等</td><td></td></tr><tr><td>### exec</td><td></td></tr><tr><td>exec也是系统调用，作用是切换子进程中的执行程序，也就是替换其从父进程复制过来的代码段与数据段</td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps －fxo user,ppid,pid,pgid,command</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td>### 进程组与sessions</td><td></td></tr><tr><td>一般情况，进程组的 PGID 等同于进程组的第一个成员的 PID，并且这样的进程称为该进程组的领导者,也就是领导进程，进程一般通过使用 getpgrp() 系统调用来寻找其所在组的 PGID，领导进程可以先终结，此时进程组依然存在，并持有相同的PGID，直到进程组中最后一个进程终结</td><td></td></tr><tr><td>### 进程工作管理</td><td></td></tr><tr><td>&amp; 命令后台运行</td><td></td></tr><tr><td>ctrl+z 使正在执行中的命令到后台运行</td><td></td></tr><tr><td>#### jobs命令详解</td><td></td></tr><tr><td>jobs命令查看被停止并被放置在后台的工作，一共四列</td><td></td></tr><tr><td>示例</td><td>含义</td></tr><tr><td>–</td><td>–</td></tr><tr><td>[1]</td><td>放置在后台的job的编号</td></tr><tr><td>+</td><td>+表示最近刚被放置到后台的job,-表示倒数第二个被放置到后台的job,其他不会有修饰</td></tr><tr><td>suspended</td><td>表示状态</td></tr><tr><td>tail -f TEST</td><td>命令</td></tr><tr><td>#### fg</td><td></td></tr><tr><td>将后台的工作拿到前台来</td><td></td></tr><tr><td>直接使用fg表示提取预设工作，fg %2表示提取job编号为2的任务</td><td></td></tr><tr><td>#### kill</td><td></td></tr><tr><td>kill -signal %jobnumber</td><td></td></tr><tr><td>kill -signal pid</td><td></td></tr><tr><td>kill常用信号值</td><td></td></tr><tr><td>信号值</td><td>作用</td></tr><tr><td>–</td><td>–</td></tr><tr><td>-1</td><td>重新读取参数运行，类似于restart</td></tr><tr><td>-2</td><td>如同ctrl+c的操作退出</td></tr><tr><td>-9</td><td>强制终止该任务</td></tr><tr><td>-15</td><td>正常的方式终止该任务</td></tr></tbody></table>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;本系列来源于蓝桥：&lt;a href=&quot;https://www.lanqiao.cn/courses/2610&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.lanqiao.cn/courses/2610&lt;/a&gt;&lt;br&gt;同系列文已发布在
-      
-    
-    </summary>
-    
-    
-      <category term="操作系统" scheme="http://www.hexiaojiao.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-      <category term="学习" scheme="http://www.hexiaojiao.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>操作系统（2）-进程管理</title>
     <link href="http://www.hexiaojiao.top/2021/07/20/opratingSystem_02/"/>
     <id>http://www.hexiaojiao.top/2021/07/20/opratingSystem_02/</id>
@@ -100,6 +74,32 @@
       
         &lt;p&gt;蓝桥操作系统课程的学习笔记&lt;/p&gt;
 &lt;h1 id=&quot;top&quot;&gt;&lt;a href=&quot;#top&quot; class=&quot;headerlink&quot; title=&quot;top&quot;&gt;&lt;/a&gt;top&lt;/h1&gt;&lt;p&gt;实时查看进程的状态&lt;br&gt;&lt;strong&gt;top第一行&lt;/strong&gt;&lt;br&gt;|内容| 
+      
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://www.hexiaojiao.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="学习" scheme="http://www.hexiaojiao.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>操作系统（1）-基础和vim操作</title>
+    <link href="http://www.hexiaojiao.top/2021/07/20/opratingSystem_01/"/>
+    <id>http://www.hexiaojiao.top/2021/07/20/opratingSystem_01/</id>
+    <published>2021-07-20T08:34:10.000Z</published>
+    <updated>2021-07-23T02:14:39.386Z</updated>
+    
+    <content type="html"><![CDATA[<p>本系列来源于蓝桥：<a href="https://www.lanqiao.cn/courses/2610" target="_blank" rel="noopener">https://www.lanqiao.cn/courses/2610</a><br>同系列文已发布在<a href="https://blog.csdn.net/qq_28391061/article/details/118521068" target="_blank" rel="noopener">CSDN</a></p><h4 id="命令行中的shell通配符"><a href="#命令行中的shell通配符" class="headerlink" title="命令行中的shell通配符"></a>命令行中的shell通配符</h4><table><thead><tr><th>字符</th><th>含义</th></tr></thead><tbody><tr><td>*</td><td>匹配0或多个字符</td></tr><tr><td>?</td><td>匹配任意一个字符</td></tr><tr><td>[list]</td><td>匹配 list 中的任意单一字符</td></tr><tr><td>[^list]</td><td>匹配 除list 中的任意单一字符以外的字符</td></tr><tr><td>[c1-c2]</td><td>匹配 c1-c2之间的任意单一字符</td></tr><tr><td>{string1, string2…}</td><td>匹配 string1 或 string2 (或更多)其一字符串</td></tr><tr><td>{c1..c2}</td><td>匹配 c1-c2 中全部字符 如{1..10}</td></tr><tr><td>### 示例</td><td></td></tr><tr><td>#### 创建用户lilei</td><td></td></tr><tr><td>sudo adduser lilei</td><td></td></tr><tr><td>#### 将lilei加入sudo组</td><td></td></tr><tr><td>sudo usermod -G sudo lilei</td><td></td></tr><tr><td>#### 删除用户lilei</td><td></td></tr><tr><td>sudo deluser lilei –remove-home</td><td></td></tr><tr><td>### 问题</td><td></td></tr><tr><td>#### ls -l列出的每一行是什么意思？</td><td></td></tr><tr><td>例如：lrwxrwxrwx 1 root      root        14 7月   6 17:12 anaconda3 -&gt; /opt/anaconda3</td><td></td></tr><tr><td>示例</td><td>含义</td></tr><tr><td>–</td><td>–</td></tr><tr><td>lrwxrwxrwx</td><td>文件类型和权限</td></tr><tr><td>2</td><td>文件和权限</td></tr><tr><td>root</td><td>所有者</td></tr><tr><td>root</td><td>所属用户组</td></tr><tr><td>14</td><td>文件大小</td></tr><tr><td>7月   6 17:12</td><td>最后修改时间</td></tr><tr><td>anaconda3 -&gt; /opt/anaconda3</td><td>文件名</td></tr><tr><td>#### vim查漏补缺</td><td></td></tr><tr><td><strong>添加或修改</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A在行末添加文本</span><br><span class="line">a在光标之后插入文本</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>删除</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x在正常(normal)模式下可删除光标所在的一个字符</span><br><span class="line">dw可删除一个单词，从光标当前位置到下一个单词起始处,d2w删除两个</span><br><span class="line">de从光标当前位置到单词结尾，d2e删除两个</span><br><span class="line">d$从当前光标删除至行末</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>移动</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2w向前移动2个单词</span><br><span class="line">3e光标移动到第三个单词的末尾</span><br><span class="line">0移动光标到行首</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>撤销</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">U撤销对整行的修改</span><br><span class="line">CTRL+r重做，即撤销被撤销的命令</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>置入</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p将最后一次删除的内容置入光标下一行</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>替换</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">r替换掉当前光标所在字符，例如rc代表把当前光标所谓位置字符替换为c</span><br><span class="line">R连续替换多个字符</span><br><span class="line">ce改变文本直到一个单词的末尾</span><br><span class="line">c$替换当前光标到行末的内容</span><br><span class="line">s&#x2F;old&#x2F;new&#x2F;可替换当前光标所在行的第一个字符串</span><br><span class="line">s&#x2F;old&#x2F;new&#x2F;g替换光标坐在行匹配到的所有字符串</span><br><span class="line">m,ns&#x2F;old&#x2F;new&#x2F;g代表替换m到n行之间出现的每个匹配串</span><br><span class="line">%s&#x2F;old&#x2F;new&#x2F;g替换整个文件中出现的每个匹配串</span><br><span class="line">%s&#x2F;old&#x2F;new&#x2F;g找到整个文件中的每个匹配串并提示是否替换</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>定位及文件状态</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctrl+g显示当前编辑文件中当前光标所在行位置以及文件状态信息</span><br><span class="line">行号+G可以直接跳转到该行（等同于:+行号）</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>搜索类命令</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;后n查找下一个,N查找上一个</span><br><span class="line">ctrl+o回到上一次查找的位置，可以重复按</span><br><span class="line">%可以查找配对的括号:)]&#125;</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>执行外部命令</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:!+命令可以执行外部命令，例如:!ls</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>保存</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">w+文件名另存为某文件</span><br><span class="line">v motion :w filename，选择性的保存文件，按v之后高亮选择文件，按:w filename保存到文件中</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>提取和合并文件</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:r FILENAME在光标中插入FILENAME文件里的内容</span><br><span class="line">:r !ls 将ls命令的结果插入当前光标之后</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>复制粘贴</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v光标移动选择文本，y复制文本，p粘贴文本</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td><strong>设置</strong></td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:set ic, 设置查找时忽略大小写(ignore case)，取消设置set noic</span><br><span class="line">:set hls is, 匹配项高亮显示,取消设置 nohlsearch</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td>## Linux进程</td><td></td></tr><tr><td>### fork</td><td></td></tr><tr><td>fork是一个系统调用，主要作用就会为当前进程创建一个新的进程，这个新的进程就是它的子进程，这个子进程除了父进程的返回值和pid以外其他的都一模一样，如进程的执行代码段，内存信息，文件描述，寄存器状态等等</td><td></td></tr><tr><td>### exec</td><td></td></tr><tr><td>exec也是系统调用，作用是切换子进程中的执行程序，也就是替换其从父进程复制过来的代码段与数据段</td><td></td></tr><tr><td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps －fxo user,ppid,pid,pgid,command</span><br></pre></td></tr></table></figure></td><td></td></tr><tr><td>### 进程组与sessions</td><td></td></tr><tr><td>一般情况，进程组的 PGID 等同于进程组的第一个成员的 PID，并且这样的进程称为该进程组的领导者,也就是领导进程，进程一般通过使用 getpgrp() 系统调用来寻找其所在组的 PGID，领导进程可以先终结，此时进程组依然存在，并持有相同的PGID，直到进程组中最后一个进程终结</td><td></td></tr><tr><td>### 进程工作管理</td><td></td></tr><tr><td>&amp; 命令后台运行</td><td></td></tr><tr><td>ctrl+z 使正在执行中的命令到后台运行</td><td></td></tr><tr><td>#### jobs命令详解</td><td></td></tr><tr><td>jobs命令查看被停止并被放置在后台的工作，一共四列</td><td></td></tr><tr><td>示例</td><td>含义</td></tr><tr><td>–</td><td>–</td></tr><tr><td>[1]</td><td>放置在后台的job的编号</td></tr><tr><td>+</td><td>+表示最近刚被放置到后台的job,-表示倒数第二个被放置到后台的job,其他不会有修饰</td></tr><tr><td>suspended</td><td>表示状态</td></tr><tr><td>tail -f TEST</td><td>命令</td></tr><tr><td>#### fg</td><td></td></tr><tr><td>将后台的工作拿到前台来</td><td></td></tr><tr><td>直接使用fg表示提取预设工作，fg %2表示提取job编号为2的任务</td><td></td></tr><tr><td>#### kill</td><td></td></tr><tr><td>kill -signal %jobnumber</td><td></td></tr><tr><td>kill -signal pid</td><td></td></tr><tr><td>kill常用信号值</td><td></td></tr><tr><td>信号值</td><td>作用</td></tr><tr><td>–</td><td>–</td></tr><tr><td>-1</td><td>重新读取参数运行，类似于restart</td></tr><tr><td>-2</td><td>如同ctrl+c的操作退出</td></tr><tr><td>-9</td><td>强制终止该任务</td></tr><tr><td>-15</td><td>正常的方式终止该任务</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;本系列来源于蓝桥：&lt;a href=&quot;https://www.lanqiao.cn/courses/2610&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.lanqiao.cn/courses/2610&lt;/a&gt;&lt;br&gt;同系列文已发布在
       
     
     </summary>
@@ -348,36 +348,6 @@
   
   <entry>
     <title>linux命令大全</title>
-    <link href="http://www.hexiaojiao.top/2020/02/27/linuxOpe/"/>
-    <id>http://www.hexiaojiao.top/2020/02/27/linuxOpe/</id>
-    <published>2020-02-27T10:00:00.000Z</published>
-    <updated>2021-07-23T01:58:27.066Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h2><h3 id="arch"><a href="#arch" class="headerlink" title="arch"></a>arch</h3><p><strong>描述</strong></p><p>显示机器的处理器架构<br><strong>举例</strong></p><p><img src="/images/linux/arch.png" alt="towrow"></p><h3 id="uname"><a href="#uname" class="headerlink" title="uname"></a>uname</h3><p><strong>描述</strong></p><p>显示机器的处理器架构<br><strong>参数</strong></p><p>-a或–all 　显示全部的信息。<br>-m或–machine 　显示电脑类型。<br>-n或-nodename 　显示在网络上的主机名称。<br>-r或–release 　显示操作系统的发行编号。<br>-s或–sysname 　显示操作系统名称。<br>-v 　显示操作系统的版本。<br>–help 　显示帮助。<br>–version 　显示版本信息。<br><strong>举例</strong></p><p><img src="/images/linux/uname.png" alt="towrow"></p><h3 id="dmidecode"><a href="#dmidecode" class="headerlink" title="dmidecode"></a>dmidecode</h3><p><strong>描述</strong></p><p>显示硬件信息，不常用，可忽略</p><h2 id="开关机"><a href="#开关机" class="headerlink" title="开关机"></a>开关机</h2><h3 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown"></a>shutdown</h3><p><strong>描述</strong></p><p>关机或重启<br><strong>参数</strong></p><p>-t seconds : 设定在几秒钟之后进行关机程序。<br>-k : 并不会真的关机，只是将警告讯息传送给所有使用者。<br>-r : 关机后重新开机。<br>-h : 关机后停机。<br>-n : 不采用正常程序来关机，用强迫的方式杀掉所有执行中的程序后自行关机。<br>-c : 取消目前已经进行中的关机动作。<br>-f : 关机时，不做 fcsk 动作(检查 Linux 档系统)。<br>-F : 关机时，强迫进行 fsck 动作。<br>time : 设定关机的时间。<br>message : 传送给所有使用者的警告讯息。<br><strong>举例</strong></p><pre><code>shutdown -h now //立即关机shutdown -r now //立即重启</code></pre><h3 id="reboot"><a href="#reboot" class="headerlink" title="reboot"></a>reboot</h3><p><strong>描述</strong></p><p>重启<br><strong>参数</strong></p><p>-n : 在重开机前不做将记忆体资料写回硬盘的动作<br>-w : 并不会真的重开机，只是把记录写到 /var/log/wtmp 档案里<br>-d : 不把记录写到 /var/log/wtmp 档案里（-n 这个参数包含了 -d）<br>-f : 强迫重开机，不呼叫 shutdown 这个指令<br>-i : 在重开机之前先把所有网络相关的装置先停止     </p><h3 id="logout"><a href="#logout" class="headerlink" title="logout"></a>logout</h3><p><strong>描述</strong></p><p>登出系统<br>###</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;系统信息&quot;&gt;&lt;a href=&quot;#系统信息&quot; class=&quot;headerlink&quot; title=&quot;系统信息&quot;&gt;&lt;/a&gt;系统信息&lt;/h2&gt;&lt;h3 id=&quot;arch&quot;&gt;&lt;a href=&quot;#arch&quot; class=&quot;headerlink&quot; title=&quot;arch&quot;&gt;&lt;/a
-      
-    
-    </summary>
-    
-    
-      <category term="操作系统" scheme="http://www.hexiaojiao.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-      <category term="linux" scheme="http://www.hexiaojiao.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/linux/"/>
-    
-      <category term="系统相关" scheme="http://www.hexiaojiao.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/linux/%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3/"/>
-    
-    
-      <category term="学习" scheme="http://www.hexiaojiao.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux命令大全</title>
     <link href="http://www.hexiaojiao.top/2020/02/27/linuxUse/"/>
     <id>http://www.hexiaojiao.top/2020/02/27/linuxUse/</id>
     <published>2020-02-27T10:00:00.000Z</published>
@@ -400,6 +370,36 @@
       <category term="linux" scheme="http://www.hexiaojiao.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/linux/"/>
     
       <category term="文件相关" scheme="http://www.hexiaojiao.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/linux/%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3/"/>
+    
+    
+      <category term="学习" scheme="http://www.hexiaojiao.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux命令大全</title>
+    <link href="http://www.hexiaojiao.top/2020/02/27/linuxOpe/"/>
+    <id>http://www.hexiaojiao.top/2020/02/27/linuxOpe/</id>
+    <published>2020-02-27T10:00:00.000Z</published>
+    <updated>2021-07-23T01:58:27.066Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h2><h3 id="arch"><a href="#arch" class="headerlink" title="arch"></a>arch</h3><p><strong>描述</strong></p><p>显示机器的处理器架构<br><strong>举例</strong></p><p><img src="/images/linux/arch.png" alt="towrow"></p><h3 id="uname"><a href="#uname" class="headerlink" title="uname"></a>uname</h3><p><strong>描述</strong></p><p>显示机器的处理器架构<br><strong>参数</strong></p><p>-a或–all 　显示全部的信息。<br>-m或–machine 　显示电脑类型。<br>-n或-nodename 　显示在网络上的主机名称。<br>-r或–release 　显示操作系统的发行编号。<br>-s或–sysname 　显示操作系统名称。<br>-v 　显示操作系统的版本。<br>–help 　显示帮助。<br>–version 　显示版本信息。<br><strong>举例</strong></p><p><img src="/images/linux/uname.png" alt="towrow"></p><h3 id="dmidecode"><a href="#dmidecode" class="headerlink" title="dmidecode"></a>dmidecode</h3><p><strong>描述</strong></p><p>显示硬件信息，不常用，可忽略</p><h2 id="开关机"><a href="#开关机" class="headerlink" title="开关机"></a>开关机</h2><h3 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown"></a>shutdown</h3><p><strong>描述</strong></p><p>关机或重启<br><strong>参数</strong></p><p>-t seconds : 设定在几秒钟之后进行关机程序。<br>-k : 并不会真的关机，只是将警告讯息传送给所有使用者。<br>-r : 关机后重新开机。<br>-h : 关机后停机。<br>-n : 不采用正常程序来关机，用强迫的方式杀掉所有执行中的程序后自行关机。<br>-c : 取消目前已经进行中的关机动作。<br>-f : 关机时，不做 fcsk 动作(检查 Linux 档系统)。<br>-F : 关机时，强迫进行 fsck 动作。<br>time : 设定关机的时间。<br>message : 传送给所有使用者的警告讯息。<br><strong>举例</strong></p><pre><code>shutdown -h now //立即关机shutdown -r now //立即重启</code></pre><h3 id="reboot"><a href="#reboot" class="headerlink" title="reboot"></a>reboot</h3><p><strong>描述</strong></p><p>重启<br><strong>参数</strong></p><p>-n : 在重开机前不做将记忆体资料写回硬盘的动作<br>-w : 并不会真的重开机，只是把记录写到 /var/log/wtmp 档案里<br>-d : 不把记录写到 /var/log/wtmp 档案里（-n 这个参数包含了 -d）<br>-f : 强迫重开机，不呼叫 shutdown 这个指令<br>-i : 在重开机之前先把所有网络相关的装置先停止     </p><h3 id="logout"><a href="#logout" class="headerlink" title="logout"></a>logout</h3><p><strong>描述</strong></p><p>登出系统<br>###</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;系统信息&quot;&gt;&lt;a href=&quot;#系统信息&quot; class=&quot;headerlink&quot; title=&quot;系统信息&quot;&gt;&lt;/a&gt;系统信息&lt;/h2&gt;&lt;h3 id=&quot;arch&quot;&gt;&lt;a href=&quot;#arch&quot; class=&quot;headerlink&quot; title=&quot;arch&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://www.hexiaojiao.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+      <category term="linux" scheme="http://www.hexiaojiao.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/linux/"/>
+    
+      <category term="系统相关" scheme="http://www.hexiaojiao.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/linux/%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3/"/>
     
     
       <category term="学习" scheme="http://www.hexiaojiao.top/tags/%E5%AD%A6%E4%B9%A0/"/>
